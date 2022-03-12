@@ -1,10 +1,23 @@
+import * as path from 'node:path';
+import * as fs from 'node:fs';
 import * as process from 'node:process';
 import { execaCommandSync as exec } from 'execa';
-import { chProjectDir } from 'lion-system';
+import { chProjectDir, getProjectDir } from 'lion-system';
 
-exec('pnpm build');
 chProjectDir(import.meta.url);
-process.chdir('dist');
+exec('pnpm build');
+
+const monorepoDir = getProjectDir(import.meta.url, { monorepoRoot: true });
+const distDir = path.join(getProjectDir(import.meta.url), 'dist');
+
+const iconsDir = path.join(distDir, 'icons');
+fs.mkdirSync(iconsDir, { recursive: true });
+fs.copyFileSync(
+	path.join(monorepoDir, 'assets/jslatex.png'),
+	path.join(iconsDir, 'icon.png')
+);
+
+process.chdir(distDir);
 
 exec('vsce package');
 exec('vsce publish');
