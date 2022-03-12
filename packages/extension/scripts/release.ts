@@ -2,10 +2,11 @@ import * as path from 'node:path';
 import * as fs from 'node:fs';
 import * as process from 'node:process';
 import { execaCommandSync as exec } from 'execa';
-import { chProjectDir, getProjectDir } from 'lion-system';
+import { chProjectDir, getProjectDir, rmDist } from 'lion-system';
 
+rmDist();
 chProjectDir(import.meta.url);
-exec('pnpm build');
+exec('pnpm build', { stdio: 'inherit' });
 
 const monorepoDir = getProjectDir(import.meta.url, { monorepoRoot: true });
 const distDir = path.join(getProjectDir(import.meta.url), 'dist');
@@ -19,5 +20,5 @@ fs.copyFileSync(
 
 process.chdir(distDir);
 
-exec('vsce package');
-exec('vsce publish');
+exec('vsce package', { stdio: 'inherit' });
+exec('vsce publish', { stdio: 'inherit' });
