@@ -27,7 +27,6 @@
 		"ejs",
 		"compile"
 	],
-	"main": "./dist/main.js",
 	"contributes": {
 		"languages": [
 			{
@@ -45,11 +44,11 @@
 		"grammars": [
 			{
 				"language": "jslatex",
-				"scopeName": "text.tex.jslatex",
+				"scopeName": "text.tex.latex.jslatex",
 				"path": "./dist/syntax/JSLaTeX.tmLanguage.json",
 				"embeddedLanguages": {
-					"source.js": "javascript",
-					"source.latex": "latex"
+					"meta.embedded.block.javascript": "source.js",
+					"meta.embedded.block.latex": "latex"
 				}
 			}
 		]
