@@ -17,12 +17,10 @@
 	"main": "./index.js",
 	"scripts": {
 		"prepare": "lion-git-hooks",
-		"build": "node-ts ./scripts/build.ts",
-		"start": "node-ts ./src/index.ts",
-		"test": "vitest run",
-		"lint": "eslint --cache --fix .",
-		"prettier": "prettier --write src",
-		"tc": "tsc --noEmit"
+		"test": "pnpm recursive run test",
+		"lint": "pnpm recursive run lint",
+		"prettier": "pnpm recursive run prettier",
+		"tc": "pnpm recursive run tc"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^15.0.0",
