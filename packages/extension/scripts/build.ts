@@ -1,6 +1,7 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { join } from 'desm';
+import { copyPackageFiles } from 'lion-system';
 
 const extensionPackagePath = join(import.meta.url, '..');
 const syntaxFolderPath = path.join(extensionPackagePath, 'syntax');
@@ -23,3 +24,9 @@ await Promise.all(
 		);
 	})
 );
+
+copyPackageFiles();
+
+const monorepoDir = getProjectDir(import.meta.url, { monorepoRoot: true });
+fs.copyFileSync(path.join(monorepoDir, 'readme.md'), 'dist/readme.md');
+fs.copyFileSync(path.join(monorepoDir, 'license'), 'dist/license');

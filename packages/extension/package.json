@@ -38,14 +38,14 @@
 				"extensions": [
 					".jtex"
 				],
-				"configuration": "./dist/syntax/jslatex-language-configuration.json"
+				"configuration": "./syntax/jslatex-language-configuration.json"
 			}
 		],
 		"grammars": [
 			{
 				"language": "jslatex",
 				"scopeName": "text.tex.latex.jslatex",
-				"path": "./dist/syntax/JSLaTeX.tmLanguage.json",
+				"path": "./syntax/JSLaTeX.tmLanguage.json",
 				"embeddedLanguages": {
 					"meta.embedded.block.javascript": "source.js",
 					"meta.embedded.block.latex": "latex"
