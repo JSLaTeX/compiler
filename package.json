@@ -1,13 +1,13 @@
 {
-	"name": "latex-ejs",
+	"name": "jslatex",
 	"version": "0.0.0",
 	"description": "EJS in LaTeX!",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/leonzalion/latex-ejs.git"
+		"url": "https://github.com/leonzalion/jslatex.git"
 	},
-	"homepage": "https://github.com/leonzalion/latex-ejs#readme",
+	"homepage": "https://github.com/leonzalion/jslatex#readme",
 	"author": {
 		"name": "Leon Si",
 		"email": "contact@leonzalion.com",
