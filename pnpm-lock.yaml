@@ -15,7 +15,7 @@ importers:
       execa: ^6.0.0
       lint-staged: ^12.1.3
       lion-git-hooks: ^1.0.2
-      lion-system: latest
+      lion-system: ^1.0.12
       outdent: ^0.8.0
       prettier: ^2.5.1
       tsc-alias: ^1.6.1
@@ -35,7 +35,7 @@ importers:
       execa: 6.1.0
       lint-staged: 12.3.5
       lion-git-hooks: 1.0.7
-      lion-system: 1.0.11
+      lion-system: 1.0.12
       prettier: 2.5.1
       tsc-alias: 1.6.4
       typescript: 4.6.2
@@ -44,8 +44,10 @@ importers:
   packages/compiler:
     specifiers:
       '@types/ejs': ^3.1.0
+      commander: ^9.0.0
       ejs: ^3.1.6
     dependencies:
+      commander: 9.0.0
       ejs: 3.1.6
     devDependencies:
       '@types/ejs': 3.1.0
@@ -3854,8 +3856,8 @@ packages:
       pkg-dir: 6.0.1
     dev: true
 
-  /lion-system/1.0.11:
-    resolution: {integrity: sha512-LqM5rvDiwoPyDniB/1R+YDTZJm9w8eSvC8RWri1BBHGyrzLX53phMolizfje17Bh8h8WN0PFNgHM5sglbUft4Q==}
+  /lion-system/1.0.12:
+    resolution: {integrity: sha512-CzEG8ujoWKMrtIaCh9LOIcAH+CYgI4ZDbyzxxXiXG4aJL2inwdNOoT6wJioKnDebXelI7000mmJ2YPSSGt4TPg==}
     dependencies:
       execa: 6.1.0
       pkg-up: 4.0.0

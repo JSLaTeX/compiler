@@ -1,6 +1,8 @@
 {
 	"name": "jslatex-compiler",
+	"bin": "./bin/cli.js",
 	"dependencies": {
+		"commander": "^9.0.0",
 		"ejs": "^3.1.6"
 	},
 	"devDependencies": {
