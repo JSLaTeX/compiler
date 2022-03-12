@@ -2,10 +2,8 @@
 	"extends": "./tsconfig.json",
 	"include": [
 		"packages",
-		"typings",
 		"scripts",
 		".eslintrc.cjs",
-		".markdownlint.cjs",
-		"vitest.config.ts"
+		".markdownlint.cjs"
 	]
 }

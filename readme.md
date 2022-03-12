@@ -1,3 +1,3 @@
-# LaTeX EJS
+# JSLaTeX
 
-Embed [EJS](https://ejs.co) inside your LaTeX files!
+Supercharging LaTeX with JavaScript through [EJS](https://ejs.co)!

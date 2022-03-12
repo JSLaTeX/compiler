@@ -1,7 +1,7 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { join } from 'desm';
-import { copyPackageFiles } from 'lion-system';
+import { copyPackageFiles, getProjectDir } from 'lion-system';
 
 const extensionPackagePath = join(import.meta.url, '..');
 const syntaxFolderPath = path.join(extensionPackagePath, 'syntax');

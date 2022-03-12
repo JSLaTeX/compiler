@@ -2,16 +2,9 @@
 	"extends": "@leonzalion/configs/tsconfig.json",
 	"compilerOptions": {
 		"module": "esnext",
-		"outDir": "dist",
 		"baseUrl": ".",
-		"paths": {
-			"~/*": [
-				"packages/extension/src/*"
-			]
-		}
 	},
 	"include": [
-		"packages/extension/src",
-		"./typings"
+		"packages",
 	]
 }
