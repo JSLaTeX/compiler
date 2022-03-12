@@ -1,114 +1,106 @@
 {
-  "name": "jslatex",
-  "displayName": "JSLaTeX",
-  "description": "Superpower your LaTeX files with JavaScript!",
-  "icon": "icons/icon.png",
-  "version": "0.0.0",
-  "publisher": "Leon Si",
-  "license": "MIT",
-  "homepage": "https://github.com/leonzalion/JSLaTeX",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/leonzalion/JSLaTeX.git"
-  },
-  "engines": {
-    "vscode": "^1.62.0"
-  },
-  "categories": [
-    "Programming Languages",
-    "Snippets",
-    "Linters",
-    "Formatters"
-  ],
-  "keywords": [
-    "latex",
-    "tex",
+	"name": "jslatex",
+	"displayName": "JSLaTeX",
+	"description": "Superpower your LaTeX files with JavaScript!",
+	"icon": "icons/icon.png",
+	"type": "module",
+	"version": "0.0.0",
+	"publisher": "Leon Si",
+	"license": "MIT",
+	"homepage": "https://github.com/leonzalion/JSLaTeX",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/leonzalion/JSLaTeX.git"
+	},
+	"engines": {
+		"vscode": "^1.62.0"
+	},
+	"categories": [
+		"Programming Languages",
+		"Snippets",
+		"Linters",
+		"Formatters"
+	],
+	"keywords": [
+		"latex",
+		"tex",
 		"ejs",
-    "compile"
-  ],
-  "activationEvents": [
-    "onLanguage:tex",
-    "onLanguage:latex",
-    "onLanguage:latex-expl3",
-    "onLanguage:doctex"
-  ],
-  "main": "./dist/main.js",
-  "capabilities": {
-    "untrustedWorkspaces": {
-      "supported": true
-    }
-  },
-  "contributes": {
-    "languages": [
-      {
-        "id": "jslatex",
-        "aliases": [
-          "JSLaTeX",
-          "jslatex"
-        ],
-        "extensions": [
-          ".jtex"
-        ],
-        "configuration": "./syntax/jslatex-language-configuration.json"
-      }
-    ],
-    "grammars": [
-      {
-        "language": "latex",
-        "scopeName": "text.tex.latex",
-        "path": "./syntax/LaTeX.tmLanguage.json",
-        "embeddedLanguages": {
-          "source.js": "javascript",
+		"compile"
+	],
+	"activationEvents": [
+		"onLanguage:tex",
+		"onLanguage:latex",
+		"onLanguage:latex-expl3",
+		"onLanguage:doctex"
+	],
+	"main": "./dist/main.js",
+	"capabilities": {
+		"untrustedWorkspaces": {
+			"supported": true
+		}
+	},
+	"contributes": {
+		"languages": [
+			{
+				"id": "jslatex",
+				"aliases": [
+					"JSLaTeX",
+					"jslatex"
+				],
+				"extensions": [
+					".jtex"
+				],
+				"configuration": "./dist/syntax/jslatex-language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "jslatex",
+				"scopeName": "text.tex.jslatex",
+				"path": "./dist/syntax/JSLaTeX.tmLanguage.json",
+				"embeddedLanguages": {
+					"source.js": "javascript",
 					"source.latex": "latex"
-        }
-      }
-    ]
-  },
-  "scripts": {
-    "clean": "rimraf out/ .eslintcache",
-    "compile": "tsc -p tsconfig.json && tsc -p viewer/tsconfig.json",
-    "lint": "eslint --cache --ext .ts,.js .",
-    "lint:fix": "eslint --fix --cache --ext .ts,.js .",
-    "release": "npm run clean && npm run lint && npm run compile && vsce package",
-    "test": "node ./out/test/runTest.js",
-    "watch": "run-p watch-src watch-viewer",
-    "watch-alias": "npm run watch",
-    "watch-src": "tsc -watch -p tsconfig.json",
-    "watch-viewer": "tsc -watch -p viewer/tsconfig.json"
-  },
-  "dependencies": {
-    "chokidar": "3.5.3",
-    "cross-spawn": "7.0.3",
-    "glob": "7.2.0",
-    "iconv-lite": "0.6.3",
-    "latex-utensils": "4.1.0",
-    "mathjax-full": "3.2.0",
-    "micromatch": "4.0.4",
-    "pdfjs-dist": "2.13.216",
-    "tmp": "0.2.1",
-    "workerpool": "6.2.0",
-    "ws": "8.5.0"
-  },
-  "devDependencies": {
-    "@types/cross-spawn": "6.0.2",
-    "@types/glob": "7.2.0",
-    "@types/micromatch": "4.0.2",
-    "@types/mocha": "9.1.0",
-    "@types/node": "14.14.45",
-    "@types/tmp": "0.2.3",
-    "@types/vscode": "1.62.0",
-    "@types/workerpool": "6.1.0",
-    "@types/ws": "8.5.2",
-    "@typescript-eslint/eslint-plugin": "5.14.0",
-    "@typescript-eslint/parser": "5.14.0",
-    "@vscode/test-electron": "2.1.3",
-    "eslint": "8.10.0",
-    "mocha": "9.2.1",
-    "npm-run-all": "4.1.5",
-    "rimraf": "3.0.2",
-    "textmate-bailout": "1.1.0",
-    "typescript": "4.6.2",
-    "vsce": "2.6.7",
-    "vscode-extend-language": "0.1.1"
-  }
+				}
+			}
+		]
+	},
+	"scripts": {
+		"build": "node-ts scripts/build.ts"
+	},
+	"dependencies": {
+		"chokidar": "3.5.3",
+		"cross-spawn": "7.0.3",
+		"glob": "7.2.0",
+		"iconv-lite": "0.6.3",
+		"latex-utensils": "4.1.0",
+		"mathjax-full": "3.2.0",
+		"micromatch": "4.0.4",
+		"pdfjs-dist": "2.13.216",
+		"tmp": "0.2.1",
+		"workerpool": "6.2.0",
+		"ws": "8.5.0"
+	},
+	"devDependencies": {
+		"@types/cross-spawn": "6.0.2",
+		"@types/glob": "7.2.0",
+		"@types/micromatch": "4.0.2",
+		"@types/mocha": "9.1.0",
+		"@types/node": "14.14.45",
+		"@types/tmp": "0.2.3",
+		"@types/vscode": "1.62.0",
+		"@types/workerpool": "6.1.0",
+		"@types/ws": "8.5.2",
+		"@typescript-eslint/eslint-plugin": "5.14.0",
+		"@typescript-eslint/parser": "5.14.0",
+		"@vscode/test-electron": "2.1.3",
+		"eslint": "8.10.0",
+		"mocha": "9.2.1",
+		"npm-run-all": "4.1.5",
+		"rimraf": "3.0.2",
+		"textmate-bailout": "1.1.0",
+		"typescript": "4.6.2",
+		"vsce": "2.6.7",
+		"vscode-extend-language": "0.1.1"
+	}
 }
