@@ -1,7 +1,24 @@
 {
-	"name": "jslatex-compiler",
-	"bin": "./bin/cli.js",
+	"name": "jslatex",
+	"bin": {
+		"jslatex": "./bin/cli.js"
+	},
+	"version": "0.0.0",
+	"description": "Supercharging LaTeX with JavaScript!",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/leonzalion/jslatex.git"
+	},
+	"homepage": "https://github.com/leonzalion/jslatex#readme",
+	"author": {
+		"name": "Leon Si",
+		"email": "contact@leonzalion.com",
+		"url": "https://leonzalion.com"
+	},
+	"type": "module",
 	"scripts": {
+		"release": "lionp",
 		"lint": "eslint --cache --fix .",
 		"prettier": "prettier --write .",
 		"tc": "tsc --noEmit"
@@ -11,6 +28,7 @@
 		"ejs": "^3.1.6"
 	},
 	"devDependencies": {
-		"@types/ejs": "^3.1.0"
+		"@types/ejs": "^3.1.0",
+		"lionp": "^1.0.21"
 	}
 }
