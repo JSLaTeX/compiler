@@ -3,7 +3,8 @@
 	"bin": "./bin/cli.js",
 	"scripts": {
 		"lint": "eslint --cache --fix .",
-		"prettier": "prettier --write ."
+		"prettier": "prettier --write .",
+		"tc": "tsc --noEmit"
 	},
 	"dependencies": {
 		"commander": "^9.0.0",

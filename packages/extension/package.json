@@ -57,7 +57,8 @@
 		"release": "node-ts ./scripts/release.ts",
 		"build": "node-ts ./scripts/build.ts",
 		"prettier": "prettier --write .",
-		"lint": "eslint --cache --fix ."
+		"lint": "eslint --cache --fix .",
+		"tc": "tsc --noEmit"
 	},
 	"devDependencies": {
 		"vsce": "^2.7.0"
