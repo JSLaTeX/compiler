@@ -49,11 +49,15 @@ export default function getConfigString() {
 				name: 'meta.tag.metadata.script.ejs',
 				begin: r(String.raw`
 					(${ejsBeginTag})
-					${/* All characters that aren't followed by an ending EJS tag */ ''}
-					(?:
-						(?!(?:${ejsEndTag})).
-					)+
-					(?=(${ejsEndTag}))
+					${
+						/* All characters that aren't followed by an ending EJS tag (matches up to an EJS end tag) */ ''
+					}
+					(
+						(?:
+							(?!${ejsEndTag}).
+						)+
+					)
+					(?=${ejsEndTag})
 				`),
 				beginCaptures: {
 					'0': {

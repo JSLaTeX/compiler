@@ -11,7 +11,7 @@ fs.mkdirSync(syntaxDistFolder, { recursive: true });
 
 // Run all the TypeScript files
 await Promise.all(
-	fs.readdirSync(syntaxFolderPath).map((syntaxFileName) => {
+	fs.readdirSync(syntaxFolderPath).map(async (syntaxFileName) => {
 		const filename = path.parse(syntaxFileName).name;
 		const filePath = path.join(syntaxFolderPath, syntaxFileName);
 		const { default: getConfigString } = (await import(filePath)) as {
