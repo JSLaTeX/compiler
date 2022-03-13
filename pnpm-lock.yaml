@@ -78,9 +78,13 @@ importers:
 
   packages/extension/server:
     specifiers:
+      typescript: ^4.6.2
       vscode-languageserver: ^6.1.1
+      vscode-languageserver-textdocument: ^1.0.4
     dependencies:
+      typescript: 4.6.2
       vscode-languageserver: 6.1.1
+      vscode-languageserver-textdocument: 1.0.4
 
 packages:
 
@@ -5643,7 +5647,6 @@ packages:
     resolution: {integrity: sha512-HM/hFigTBHZhLXshn9sN37H085+hQGeJHJ/X7LpBWLID/fbc2acUMfU+lGD98X81sKP+pFa9f0DZmCwB9GnbAg==}
     engines: {node: '>=4.2.0'}
     hasBin: true
-    dev: true
 
   /uc.micro/1.0.6:
     resolution: {integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==}
@@ -5854,6 +5857,10 @@ packages:
     dependencies:
       vscode-jsonrpc: 6.0.0
       vscode-languageserver-types: 3.16.0
+    dev: false
+
+  /vscode-languageserver-textdocument/1.0.4:
+    resolution: {integrity: sha512-/xhqXP/2A2RSs+J8JNXpiiNVvvNM0oTosNVmQnunlKvq9o4mupHOBAnnzH0lwIPKazXKvAKsVp1kr+H/K4lgoQ==}
     dev: false
 
   /vscode-languageserver-types/3.15.1:

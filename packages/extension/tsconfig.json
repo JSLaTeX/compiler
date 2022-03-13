@@ -1,10 +1,23 @@
 {
 	"extends": "../../tsconfig.json",
 	"compilerOptions": {
-		"outDir": "dist"
+		"outDir": "dist",
+		"paths": {
+			"~client/*": [
+				"./client/src/*",
+			],
+			"~server/*": [
+				"./server/src/*"
+			],
+			"~shared/*": [
+				"./shared/src/*"
+			]
+		}
 	},
 	"include": [
-		"./src"
-, "client/src/extension.ts"	],
+		"./client",
+		"./server",
+		"./shared",
+	],
 	"exclude": []
 }

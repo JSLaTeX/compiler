@@ -11,5 +11,6 @@ module.exports = defineConfig({
 				packageDir: [__dirname, path.resolve(__dirname, '../..')],
 			},
 		],
+		'unicorn/filename-case': 'off',
 	},
 });

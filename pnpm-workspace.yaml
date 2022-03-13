@@ -3,3 +3,4 @@ packages:
   - packages/extension
   - packages/extension/client
   - packages/extension/server
+  - packages/extension/shared

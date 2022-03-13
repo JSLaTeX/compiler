@@ -45,13 +45,21 @@ export async function activate(context: ExtensionContext) {
 		middleware: {
 			// eslint-disable-next-line max-params
 			async provideCompletionItem(document, position, context, token, next) {
-				// We only want to perform request forwarding for the LaTeX document since LaTeX-Workshop doesn't expose a language server. Thus, if we're inside EJS tags (`<% %>`), do not perform request forwarding (instead, use the JS language server).
-				if (isInsideEjsRegion()) {
+				// We only want to perform request forwarding for the LaTeX document since LaTeX-Workshop doesn't expose a language server. Thus, if we're inside EJS tags (`<% %>`), do not perform request forwarding. Instead, we use the JS language server handled by our custom server.
+				if (
+					isInsideEjsRegion({
+						documentText: document.getText(),
+						offset: position.character,
+					})
+				) {
 					return next(document, position, context, token);
 				}
 
 				const originalUri = document.uri.toString();
-				virtualDocumentContents.set(originalUri, getLatexVirtualContent());
+				virtualDocumentContents.set(
+					originalUri,
+					getLatexVirtualContent(document.getText())
+				);
 
 				const vdocUriString = `embedded-content://latex/${encodeURIComponent(
 					originalUri
