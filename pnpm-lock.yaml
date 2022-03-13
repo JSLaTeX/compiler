@@ -39,7 +39,7 @@ importers:
       '@types/ejs': ^3.1.0
       commander: ^9.0.0
       ejs: ^3.1.6
-      lionp: ^1.0.22
+      lionp: ^1.0.23
       outdent: ^0.8.0
       vitest: ^0.6.0
     dependencies:
@@ -48,16 +48,10 @@ importers:
       outdent: 0.8.0
     devDependencies:
       '@types/ejs': 3.1.0
-      lionp: 1.0.22
+      lionp: 1.0.23
       vitest: 0.6.0
 
   packages/extension:
-    specifiers:
-      vsce: ^2.7.0
-    devDependencies:
-      vsce: 2.7.0
-
-  packages/extension/dist:
     specifiers:
       vsce: ^2.7.0
     devDependencies:
@@ -3624,8 +3618,8 @@ packages:
       pkg-up: 4.0.0
     dev: true
 
-  /lionp/1.0.22:
-    resolution: {integrity: sha512-Ei6hCB8TTiPwUYpD72Y1DlQJGYzqChOVqSYTarCsXTR8z1NcMtWvPPsVFtsk+VWguNhunX4dRf00WODunFo+VA==}
+  /lionp/1.0.23:
+    resolution: {integrity: sha512-jgdcKhKQvC4JHuRBgD2R/Sp+6kqztWdNWvJDXkVSd+OkQjibraDUxJA12mWutq+BxRYyAYUGI6QxKLETTBKpLg==}
     engines: {git: '>=2.11.0', node: '>=10', npm: '>=6.8.0'}
     hasBin: true
     dependencies:
