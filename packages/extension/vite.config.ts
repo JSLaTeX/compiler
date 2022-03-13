@@ -28,6 +28,7 @@ function buildSyntax() {
 
 export default defineConfig({
 	resolve: {
+		mainFields: ['monke'],
 		alias: {
 			'~': join(import.meta.url, 'client/src'),
 		},
@@ -36,16 +37,14 @@ export default defineConfig({
 		target: 'node16',
 		outDir: 'dist',
 		minify: false,
-		lib: {
-			entry: '',
-			formats: ['cjs']
-		},
 		rollupOptions: {
 			input: {
 				server: path.resolve(__dirname, 'server'),
-				client: path.resolve(__dirname, 'client'),
+				extension: path.resolve(__dirname, 'client'),
 			},
 			output: {
+				chunkFileNames: '[name].cjs',
+				format: 'cjs',
 				entryFileNames: '[name].cjs',
 			},
 			external: ['vscode'],

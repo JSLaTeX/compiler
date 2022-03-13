@@ -1,6 +1,11 @@
 import type { CompletionList, ExtensionContext } from 'vscode';
 import { workspace, commands, Uri } from 'vscode';
-import { LanguageClient, LanguageClientOptions } from 'vscode-languageclient';
+import {
+	LanguageClient,
+	LanguageClientOptions,
+	ServerOptions,
+	TransportKind,
+} from 'vscode-languageclient';
 import { isInsideEjsRegion } from './utils/ejs.js';
 import { getLatexVirtualContent } from './utils/latex.js';
 import { getJavascriptVirtualContent } from './utils/ejs.js';
@@ -8,9 +13,20 @@ import { getJavascriptVirtualContent } from './utils/ejs.js';
 let client: LanguageClient;
 
 export async function activate(context: ExtensionContext) {
-	console.log('test');
 	await commands.executeCommand('latex-workshop.tab');
-	console.log('test2');
+
+	const serverModule = context.asAbsolutePath('server.cjs');
+
+	const debugOptions = { execArgv: ['--nolazy', '--inspect=6009'] };
+
+	const serverOptions: ServerOptions = {
+		run: { module: serverModule, transport: TransportKind.ipc },
+		debug: {
+			module: serverModule,
+			transport: TransportKind.ipc,
+			options: debugOptions,
+		},
+	};
 
 	const virtualDocumentContents = new Map<string, string>();
 
@@ -23,7 +39,6 @@ export async function activate(context: ExtensionContext) {
 		},
 	});
 
-	console.log('monke');
 	const clientOptions: LanguageClientOptions = {
 		documentSelector: [{ scheme: 'file', language: 'jslatex' }],
 		middleware: {
@@ -73,4 +88,10 @@ export async function activate(context: ExtensionContext) {
 	);
 
 	client.start();
+}
+
+export async function deactivate() {
+	if (client !== undefined) {
+		await client.stop();
+	}
 }
