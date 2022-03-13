@@ -9,6 +9,7 @@ import {
 	rmDist,
 } from 'lion-system';
 import editJsonFile from 'edit-json-file';
+import { deepKeys, getProperty, setProperty } from 'dot-prop';
 
 rmDist();
 chProjectDir(import.meta.url);
@@ -27,9 +28,15 @@ fs.copyFileSync(
 	path.join(distDir, 'license')
 );
 
-// Update the "main" property
+// Update dist-pointing paths
 const pkg = editJsonFile('package.json');
-pkg.set('main', './extension.js');
+const pkgJson = pkg.read();
+for (const property of deepKeys(pkgJson)) {
+	const value = getProperty(pkgJson, property) as unknown;
+	if (typeof value === 'string' && value.startsWith('./dist')) {
+		pkg.set(property, value.replace(/^\.\/dist/, ''));
+	}
+}
 pkg.save();
 
 const iconsDir = path.join(distDir, 'icons');

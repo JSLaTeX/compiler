@@ -1,11 +1,11 @@
-import * as path from 'node:path';
 import type { CompletionList, ExtensionContext } from 'vscode';
 import { workspace, commands, Uri } from 'vscode';
-import type { LanguageClientOptions } from 'vscode-languageclient';
+import { LanguageClient, LanguageClientOptions } from 'vscode-languageclient';
 import { isInsideEjsRegion } from './utils/ejs.js';
 import { getLatexVirtualContent } from './utils/latex.js';
 import { getJavascriptVirtualContent } from './utils/ejs.js';
-import { getVirtualDocumentText } from './utils/document.js';
+
+let client: LanguageClient;
 
 export async function activate(context: ExtensionContext) {
 	console.log('test');
@@ -64,4 +64,13 @@ export async function activate(context: ExtensionContext) {
 			},
 		},
 	};
+
+	client = new LanguageClient(
+		'jslatex-language-server',
+		'JSLaTeX Language Server',
+		serverOptions,
+		clientOptions
+	);
+
+	client.start();
 }
