@@ -19,6 +19,7 @@
 	"type": "module",
 	"scripts": {
 		"release": "lionp",
+		"build": "node-ts ./scripts/build.ts",
 		"test": "vitest run",
 		"lint": "eslint --cache --fix .",
 		"prettier": "prettier --write .",

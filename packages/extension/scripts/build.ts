@@ -1,9 +1,15 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import { join } from 'desm';
-import { copyPackageFiles, getProjectDir } from 'lion-system';
+import {
+	rmDist,
+	chProjectDir,
+	copyPackageFiles,
+	getProjectDir,
+} from 'lion-system';
 
-const extensionPackagePath = join(import.meta.url, '..');
+rmDist();
+chProjectDir(import.meta.url);
+const extensionPackagePath = getProjectDir(import.meta.url);
 const syntaxFolderPath = path.join(extensionPackagePath, 'syntax');
 const distFolder = path.join(extensionPackagePath, 'dist');
 

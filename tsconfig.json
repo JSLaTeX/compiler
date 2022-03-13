@@ -2,7 +2,6 @@
 	"extends": "@leonzalion/configs/tsconfig.json",
 	"compilerOptions": {
 		"module": "esnext",
-		"baseUrl": ".",
 	},
 	"exclude": [
 		"packages",
