@@ -42,7 +42,7 @@
 				"extensions": [
 					".jtex"
 				],
-				"configuration": "./syntax/jslatex-language-configuration.json",
+				"configuration": "./dist/syntax/jslatex-language-configuration.json",
 				"icon": {
 					"light": "./icons/jslatex.png",
 					"dark": "./icons/jslatex.png"
@@ -53,7 +53,7 @@
 			{
 				"language": "jslatex",
 				"scopeName": "text.tex.latex.jslatex",
-				"path": "./syntax/JSLaTeX.tmLanguage.json",
+				"path": "./dist/syntax/JSLaTeX.tmLanguage.json",
 				"embeddedLanguages": {
 					"source.js": "javascript",
 					"meta.embedded.block.latex": "latex"
