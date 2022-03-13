@@ -9,15 +9,15 @@ function buildSyntax() {
 	return {
 		name: 'build-syntax',
 		async buildStart() {
-			const distDir = join(import.meta.url, 'dist');
-			await fs.promises.mkdir(distDir, { recursive: true });
+			const syntaxDistDir = join(import.meta.url, 'dist/syntax');
+			await fs.promises.mkdir(syntaxDistDir, { recursive: true });
 			await Promise.all([
 				fs.promises.writeFile(
-					path.join(distDir, 'JSLaTeX.tmLanguage.json'),
+					path.join(syntaxDistDir, 'JSLaTeX.tmLanguage.json'),
 					tmLanguage()
 				),
 				fs.promises.writeFile(
-					path.join(distDir, 'jslatex-language-configuration.json'),
+					path.join(syntaxDistDir, 'jslatex-language-configuration.json'),
 					languageConfiguration()
 				),
 			]);
