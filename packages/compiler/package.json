@@ -1,8 +1,5 @@
 {
 	"name": "jslatex",
-	"bin": {
-		"jslatex": "./bin/cli.js"
-	},
 	"version": "0.0.0",
 	"description": "Supercharging LaTeX with JavaScript!",
 	"license": "MIT",
@@ -17,6 +14,9 @@
 		"url": "https://leonzalion.com"
 	},
 	"type": "module",
+	"bin": {
+		"jslatex": "./bin/cli.js"
+	},
 	"scripts": {
 		"release": "lionp",
 		"build": "node-ts ./scripts/build.ts",
