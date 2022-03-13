@@ -16,9 +16,9 @@ export default function getConfigString() {
 		scopeName: 'text.tex.latex.jslatex',
 		fileTypes: ['jtex'],
 		patterns: [
+			{ include: 'text.tex.latex' },
 			{ include: '#tag-block-comment' },
 			{ include: '#tag-ejs' },
-			{ include: 'text.tex.latex' },
 		],
 		repository: {
 			// Comments that use the EJS <%# tag

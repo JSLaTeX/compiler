@@ -6,6 +6,8 @@ import {
 	copyPackageFiles,
 	getProjectDir,
 } from 'lion-system';
+import { execaCommandSync as exec } from 'execa';
+import editJsonFile from 'edit-json-file';
 
 rmDist();
 chProjectDir(import.meta.url);
@@ -36,3 +38,11 @@ copyPackageFiles();
 const monorepoDir = getProjectDir(import.meta.url, { monorepoRoot: true });
 fs.copyFileSync(path.join(monorepoDir, 'readme.md'), 'dist/readme.md');
 fs.copyFileSync(path.join(monorepoDir, 'license'), 'dist/license');
+
+// Compile the extension files in ./src
+exec('tsc');
+
+// Update the "main" property
+const pkg = editJsonFile('package.json');
+pkg.set('main', './extension.js');
+pkg.save();

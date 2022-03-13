@@ -27,6 +27,10 @@
 		"ejs",
 		"compile"
 	],
+	"main": "./dist/extension.js",
+	"activationEvents": [
+		"onLanguage:jslatex"
+	],
 	"contributes": {
 		"languages": [
 			{
@@ -51,13 +55,14 @@
 				"scopeName": "text.tex.latex.jslatex",
 				"path": "./syntax/JSLaTeX.tmLanguage.json",
 				"embeddedLanguages": {
-					"meta.embedded.block.javascript": "source.js",
+					"source.js": "javascript",
 					"meta.embedded.block.latex": "latex"
 				}
 			}
 		]
 	},
 	"scripts": {
+		"watch": "tsc --watch",
 		"release": "node-ts ./scripts/release.ts",
 		"build": "node-ts ./scripts/build.ts",
 		"prettier": "prettier --write .",
@@ -65,6 +70,9 @@
 		"tc": "tsc --noEmit"
 	},
 	"devDependencies": {
+		"@types/edit-json-file": "^1.7.0",
+		"@types/vscode": "^1.65.0",
+		"edit-json-file": "^1.7.0",
 		"vsce": "^2.7.0"
 	}
 }
