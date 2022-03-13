@@ -2,10 +2,6 @@
 	"extends": "./tsconfig.json",
 	"include": [
 		".eslintrc.cjs",
-		"client",
-		"server",
-		"syntax",
-		"scripts",
-		"vite.config.ts"
+		"src"
 	]
 }

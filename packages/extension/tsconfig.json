@@ -5,6 +5,6 @@
 	},
 	"include": [
 		"./src"
-	],
+, "client/src/extension.ts"	],
 	"exclude": []
 }

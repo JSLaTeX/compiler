@@ -1,0 +1,12 @@
+{
+	"name": "jslatex-server",
+	"description": "Language server for JSLaTeX.",
+	"version": "0.0.1",
+	"license": "MIT",
+	"engines": {
+		"node": "*"
+	},
+	"dependencies": {
+		"vscode-languageserver": "^6.1.1"
+	}
+}
