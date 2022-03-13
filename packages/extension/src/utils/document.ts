@@ -1,4 +1,4 @@
-import { EmbeddedRegion } from '~shared/types.js';
+import { EmbeddedRegion } from '~/types.js';
 
 type GetVirtualDocumentProps = {
 	documentText: string;

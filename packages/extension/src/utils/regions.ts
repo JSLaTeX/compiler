@@ -1,4 +1,4 @@
-import type { EmbeddedRegion } from '~shared/types.js';
+import type { EmbeddedRegion } from '~/types.js';
 
 export function getDocumentTextRegions(documentText: string) {
 	const regions: EmbeddedRegion[] = [];

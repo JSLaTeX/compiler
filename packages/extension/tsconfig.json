@@ -3,21 +3,13 @@
 	"compilerOptions": {
 		"outDir": "dist",
 		"paths": {
-			"~client/*": [
-				"./client/src/*",
+			"~/*": [
+				"./src/*",
 			],
-			"~server/*": [
-				"./server/src/*"
-			],
-			"~shared/*": [
-				"./shared/src/*"
-			]
 		}
 	},
 	"include": [
-		"./client",
-		"./server",
-		"./shared",
+		"./src",
 	],
 	"exclude": []
 }

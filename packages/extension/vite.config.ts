@@ -26,6 +26,11 @@ function buildSyntax() {
 }
 
 export default defineConfig({
+	resolve: {
+		alias: {
+			'~': join(import.meta.url, 'src')
+		}
+	},
 	build: {
 		target: 'node16',
 		outDir: 'dist',

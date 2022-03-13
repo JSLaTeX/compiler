@@ -4,7 +4,6 @@
 		".eslintrc.cjs",
 		"client",
 		"shared",
-		"server",
 		"syntax",
 		"scripts",
 		"vite.config.ts"
