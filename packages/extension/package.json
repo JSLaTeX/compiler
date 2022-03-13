@@ -27,7 +27,7 @@
 		"ejs",
 		"compile"
 	],
-	"main": "./dist/extension.js",
+	"main": "./dist/extension.cjs",
 	"activationEvents": [
 		"onLanguage:jslatex"
 	],
@@ -62,9 +62,10 @@
 		]
 	},
 	"scripts": {
-		"watch": "tsc --watch",
+		"watch": "vite build --watch",
 		"release": "node-ts ./scripts/release.ts",
-		"build": "node-ts ./scripts/build.ts",
+		"build": "vite build",
+		"build:syntax": "node-ts ./scripts/build-syntax.ts",
 		"prettier": "prettier --write .",
 		"lint": "eslint --cache --fix .",
 		"tc": "tsc --noEmit"
@@ -73,6 +74,7 @@
 		"@types/edit-json-file": "^1.7.0",
 		"@types/vscode": "^1.65.0",
 		"edit-json-file": "^1.7.0",
+		"vite": "^2.8.6",
 		"vsce": "^2.7.0"
 	}
 }

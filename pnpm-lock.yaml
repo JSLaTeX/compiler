@@ -56,11 +56,13 @@ importers:
       '@types/edit-json-file': ^1.7.0
       '@types/vscode': ^1.65.0
       edit-json-file: ^1.7.0
+      vite: ^2.8.6
       vsce: ^2.7.0
     devDependencies:
       '@types/edit-json-file': 1.7.0
       '@types/vscode': 1.65.0
       edit-json-file: 1.7.0
+      vite: 2.8.6
       vsce: 2.7.0
 
 packages:

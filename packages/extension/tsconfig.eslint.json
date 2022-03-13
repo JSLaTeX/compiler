@@ -4,6 +4,7 @@
 		".eslintrc.cjs",
 		"src",
 		"syntax",
-		"scripts"
+		"scripts",
+		"vite.config.ts"
 	]
 }
