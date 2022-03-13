@@ -19,16 +19,22 @@
 	"type": "module",
 	"scripts": {
 		"release": "lionp",
+		"test": "vitest run",
 		"lint": "eslint --cache --fix .",
 		"prettier": "prettier --write .",
 		"tc": "tsc --noEmit"
 	},
 	"dependencies": {
 		"commander": "^9.0.0",
-		"ejs": "^3.1.6"
+		"ejs": "^3.1.6",
+		"outdent": "^0.8.0"
 	},
 	"devDependencies": {
 		"@types/ejs": "^3.1.0",
-		"lionp": "^1.0.21"
+		"lionp": "^1.0.21",
+		"vitest": "^0.6.0"
+	},
+	"publishConfig": {
+		"directory": "dist"
 	}
 }

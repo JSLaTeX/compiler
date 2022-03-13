@@ -18,7 +18,6 @@ importers:
       prettier: ^2.5.1
       tsc-alias: ^1.6.1
       typescript: ^4.5.4
-      vitest: ^0.5.9
     devDependencies:
       '@commitlint/cli': 15.0.0
       '@leonzalion/configs': 1.1.11_4df2fce6f9be3e97dece8185899015b2
@@ -34,7 +33,6 @@ importers:
       prettier: 2.5.1
       tsc-alias: 1.6.4
       typescript: 4.6.2
-      vitest: 0.5.9
 
   packages/compiler:
     specifiers:
@@ -42,12 +40,16 @@ importers:
       commander: ^9.0.0
       ejs: ^3.1.6
       lionp: ^1.0.21
+      outdent: ^0.8.0
+      vitest: ^0.6.0
     dependencies:
       commander: 9.0.0
       ejs: 3.1.6
+      outdent: 0.8.0
     devDependencies:
       '@types/ejs': 3.1.0
       lionp: 1.0.21
+      vitest: 0.6.0
 
   packages/extension:
     specifiers:
@@ -4247,6 +4249,10 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /outdent/0.8.0:
+    resolution: {integrity: sha512-KiOAIsdpUTcAXuykya5fnVVT+/5uS0Q1mrkRHcF89tpieSmY33O/tmc54CqwA+bfhbtEfZUNLHaPUiB9X3jt1A==}
+    dev: false
+
   /p-cancelable/1.1.0:
     resolution: {integrity: sha512-s73XxOZ4zpt1edZYZzvhqFa6uvQc1vwUa0K0BdtIZgQMAJj9IbebH+JkgKZc9h+B05PKHLOTl4ajG1BmNrVZlw==}
     engines: {node: '>=6'}
@@ -5679,8 +5685,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.5.9:
-    resolution: {integrity: sha512-R8lRP9Q1yIbwr8pDf2gvw4PFe8H5YMyHhBcdyfnUh6toLfCR10jrdI/WkNxdo5I4H/9XrMX9t+SAavdJExNdKg==}
+  /vitest/0.6.0:
+    resolution: {integrity: sha512-FuIkLHCQxz6rO35MQROUtVdwcBaYnt198YpPGIrJXmuNHGolfPbrZIiwpD7bek0OiETxuphK3+KR5oJ5Qi1g5A==}
     engines: {node: '>=14.14.0'}
     hasBin: true
     peerDependencies:

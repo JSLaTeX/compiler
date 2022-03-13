@@ -35,8 +35,7 @@
 		"lion-system": "^1.0.14",
 		"prettier": "^2.5.1",
 		"tsc-alias": "^1.6.1",
-		"typescript": "^4.5.4",
-		"vitest": "^0.5.9"
+		"typescript": "^4.5.4"
 	},
 	"prettier": "@leonzalion/configs/prettier.cjs",
 	"commitlint": {
