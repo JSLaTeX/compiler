@@ -1,36 +1,40 @@
-import { EmbeddedRegion } from '~/types.js';
+import { EmbeddedRegion } from '~client/types.js';
 
 type GetVirtualDocumentProps = {
 	documentText: string;
 	regions: EmbeddedRegion[];
 	languageId: string;
 };
-export function getVirtualDocumentText({
+export function getVirtualDocumentTextSections({
 	documentText,
 	regions,
 	languageId,
-}: GetVirtualDocumentProps): string {
+}: GetVirtualDocumentProps): string[] {
 	let currentPos = 0;
 	const oldContent = documentText;
 
-	let virtualDocumentString = '';
+	let virtualDocumentTextSections: string[] = [];
 	for (const region of regions) {
 		if (region.languageId === languageId) {
 			// Replace the content before the region with whitespace
-			virtualDocumentString += substituteWithWhitespace(
-				oldContent.slice(currentPos, region.start)
+			virtualDocumentTextSections.push(
+				substituteWithWhitespace(oldContent.slice(currentPos, region.start))
 			);
 			// Copy verbatim the region in the old content
-			virtualDocumentString += oldContent.slice(region.start, region.end);
+			virtualDocumentTextSections.push(
+				oldContent.slice(region.start, region.end)
+			);
 			currentPos = region.end;
 		}
 	}
 
-	virtualDocumentString += substituteWithWhitespace(
-		oldContent.slice(currentPos)
+	virtualDocumentTextSections.push(
+		substituteWithWhitespace(oldContent.slice(currentPos))
 	);
 
-	return virtualDocumentString;
+	console.log(virtualDocumentTextSections)
+
+	return virtualDocumentTextSections;
 }
 
 /**

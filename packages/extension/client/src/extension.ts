@@ -14,7 +14,6 @@ import { getJavascriptVirtualContent } from './utils/ejs.js';
 let client: LanguageClient;
 
 export async function activate(context: ExtensionContext) {
-	console.log('monkeee');
 	await commands.executeCommand('latex-workshop.tab');
 
 	const serverModule = context.asAbsolutePath(path.join('dist', 'server.cjs'));
@@ -34,7 +33,6 @@ export async function activate(context: ExtensionContext) {
 
 	workspace.registerTextDocumentContentProvider('embedded-content', {
 		provideTextDocumentContent(uri) {
-			console.log('oof', uri);
 			const originalUri = uri.path.slice(1).slice(0, -4);
 			const decodedUri = decodeURIComponent(originalUri);
 			return virtualDocumentContents.get(decodedUri);
@@ -46,7 +44,6 @@ export async function activate(context: ExtensionContext) {
 		middleware: {
 			// eslint-disable-next-line max-params
 			async provideCompletionItem(document, position, context, token, next) {
-				console.log('test');
 				const originalUri = document.uri.toString();
 				let virtualDocumentText: string;
 				let vdocUriString: string;
@@ -54,7 +51,7 @@ export async function activate(context: ExtensionContext) {
 				if (
 					isInsideEjsRegion({
 						documentText: document.getText(),
-						offset: position.character,
+						offset: document.offsetAt(position),
 					})
 				) {
 					virtualDocumentText = getJavascriptVirtualContent(document.getText());
@@ -89,6 +86,7 @@ export async function activate(context: ExtensionContext) {
 		clientOptions
 	);
 
+	console.info('Starting client...');
 	client.start();
 }
 

@@ -1,6 +1,5 @@
-import { getVirtualDocumentText } from '~/utils/document.js';
-import { EmbeddedRegion } from '~/types.js';
-import { getDocumentTextRegions } from '~/utils/regions.js';
+import { getVirtualDocumentTextSections } from '~client/utils/document.js';
+import { getDocumentTextRegions } from '~client/utils/regions.js';
 
 type IsInsideEjsRegionProps = {
 	documentText: string;
@@ -25,11 +24,16 @@ export function isInsideEjsRegion({
 export function getJavascriptVirtualContent(documentText: string): string {
 	const regions = getDocumentTextRegions(documentText);
 
-	const javascriptVirtualContent = getVirtualDocumentText({
+	const javascriptVirtualContentSections = getVirtualDocumentTextSections({
 		documentText,
 		languageId: 'js',
 		regions,
-	});
+	})
+		.map((section) => {
+			// Removing the start and end of the section
+			return section.replace(/^<%[_=-]?/, '').replace(/[_-]?%>$/, '');
+		})
+		.join('');
 
-	return javascriptVirtualContent;
+	return javascriptVirtualContentSections;
 }

@@ -1,14 +1,20 @@
-import { getVirtualDocumentText } from '~/utils/document.js';
-import { getDocumentTextRegions } from '~/utils/regions.js';
+import {
+	getVirtualDocumentTextSections,
+} from '~client/utils/document.js';
+import { getDocumentTextRegions } from '~client/utils/regions.js';
 
 export function getLatexVirtualContent(documentText: string) {
 	const regions = getDocumentTextRegions(documentText);
 
-	const latexVirtualDocumentText = getVirtualDocumentText({
+	console.log('regions', regions);
+
+	const latexVirtualDocumentText = getVirtualDocumentTextSections({
 		documentText,
 		regions,
 		languageId: 'latex',
-	});
+	}).join('');
+
+	console.log(latexVirtualDocumentText)
 
 	return latexVirtualDocumentText;
 }

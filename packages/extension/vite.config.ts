@@ -31,7 +31,7 @@ export default defineConfig({
 	resolve: {
 		mainFields: ['monke'],
 		alias: {
-			'~': join(import.meta.url, 'client/src'),
+			'~client': join(import.meta.url, 'client/src'),
 		},
 	},
 	build: {
