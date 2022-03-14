@@ -20,18 +20,17 @@ export function getDocumentTextRegions(documentText: string) {
 	for (const tagMatch of tagMatches) {
 		const isBeginTag = tagMatch[1] !== undefined;
 		const isEndTag = tagMatch[2] !== undefined;
+		const tag = tagMatch[0]!;
 
 		if (isBeginTag && !insideEjsSection) {
-			if (tagMatch.index !== 0) {
-				regions.push({
-					start:
-						lastSectionEndTagMatch === undefined
-							? 0
-							: lastSectionEndTagMatch.index! + lastSectionEndTagMatch.length,
-					end: tagMatch.index!,
-					languageId: 'latex',
-				});
-			}
+			regions.push({
+				start:
+					lastSectionEndTagMatch === undefined
+						? 0
+						: lastSectionEndTagMatch.index! + tag.length,
+				end: tagMatch.index!,
+				languageId: 'latex',
+			});
 
 			insideEjsSection = true;
 			currentSectionBeginTagMatch = tagMatch;
@@ -40,7 +39,7 @@ export function getDocumentTextRegions(documentText: string) {
 
 			regions.push({
 				start: currentSectionBeginTagMatch.index!,
-				end: tagMatch.index! + tagMatch.length - 1,
+				end: tagMatch.index! + tag.length,
 				languageId: 'js',
 			});
 
@@ -51,7 +50,7 @@ export function getDocumentTextRegions(documentText: string) {
 
 	if (lastSectionEndTagMatch !== undefined) {
 		regions.push({
-			start: lastSectionEndTagMatch.index! + lastSectionEndTagMatch.length,
+			start: lastSectionEndTagMatch.index! + lastSectionEndTagMatch[0]!.length,
 			end: documentText.length,
 			languageId: 'latex',
 		});

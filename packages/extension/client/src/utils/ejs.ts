@@ -12,13 +12,15 @@ export function isInsideEjsRegion({
 	// Parse the document text
 	const documentTextRegions = getDocumentTextRegions(documentText);
 
-	for (const textRegion of documentTextRegions) {
-		if (offset >= textRegion.start && offset < textRegion.end) {
-			return textRegion.languageId === 'js';
+	for (const textRegion of documentTextRegions.filter(
+		(region) => region.languageId === 'js'
+	)) {
+		if (offset > textRegion.start && offset < textRegion.end) {
+			return true;
 		}
 	}
 
-	throw new Error('Could not find region in document.');
+	return false;
 }
 
 export function getJavascriptVirtualContent(documentText: string): string {

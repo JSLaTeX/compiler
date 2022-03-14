@@ -2,7 +2,7 @@ export interface EmbeddedRegion {
 	languageId: string | undefined;
 	start: number;
 	/**
-	 * End is inclusive!
+	 * End is exclusive!
 	 */
 	end: number;
 }
