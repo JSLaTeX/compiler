@@ -9,6 +9,10 @@ import {
 	rmDist,
 } from 'lion-system';
 import { deepKeys, getProperty, setProperty } from 'dot-prop';
+import inquirer from 'inquirer';
+import PressToContinuePrompt from 'inquirer-press-to-continue';
+
+inquirer.registerPrompt('press-to-continue', PressToContinuePrompt);
 
 rmDist();
 chProjectDir(import.meta.url);
@@ -48,5 +52,12 @@ fs.copyFileSync(
 
 process.chdir(distDir);
 
-// exec('vsce package', { stdio: 'inherit' });
-// exec('vsce publish', { stdio: 'inherit' });
+await inquirer.prompt({
+	name: 'response',
+	pressToContinueMessage:
+		'Please inspect the `dist/` folder to make sure everything looks OK in the bundled extension! Press enter to continue...',
+	type: 'press-to-continue',
+	enter: true,
+});
+exec('vsce package', { stdio: 'inherit' });
+exec('vsce publish', { stdio: 'inherit' });

@@ -72,9 +72,12 @@
 	},
 	"devDependencies": {
 		"@types/edit-json-file": "^1.7.0",
-		"@types/vscode": "^1.65.0",
+		"@types/inquirer": "^8.2.0",
+		"@types/vscode": "^1.62.0",
 		"chalk": "^5.0.1",
 		"dot-prop": "^7.2.0",
+		"inquirer": "^8.2.1",
+		"inquirer-press-to-continue": "^1.0.8",
 		"outdent": "^0.8.0",
 		"vite": "^2.8.6",
 		"vsce": "^2.7.0"
