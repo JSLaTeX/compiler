@@ -9,7 +9,6 @@ module.exports = defineConfig({
 			'error',
 			{
 				packageDir: [
-					__dirname,
 					path.resolve(__dirname, '..'),
 					path.resolve(__dirname, '../../..')
 				],

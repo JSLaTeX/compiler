@@ -1,4 +1,4 @@
-import * as path from 'node:path';
+import * as path from 'path';
 import type { CompletionList, ExtensionContext } from 'vscode';
 import { workspace, commands, Uri } from 'vscode';
 import {

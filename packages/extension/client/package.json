@@ -1,8 +1,5 @@
 {
 	"name": "jslatex-extension-client",
 	"type": "module",
-	"main": "./src/extension.ts",
-	"dependencies": {
-		"vscode-languageclient": "^6.1.3"
-	}
+	"main": "./src/extension.ts"
 }

@@ -1,8 +1,5 @@
 {
 	"name": "jslatex-extension-server",
 	"type": "module",
-	"main": "./src/server.ts",
-	"dependencies": {
-		"vscode-languageserver": "^6.1.1"
-	}
+	"main": "./src/server.ts"
 }
