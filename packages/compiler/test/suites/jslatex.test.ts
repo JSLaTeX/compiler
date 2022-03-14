@@ -5,7 +5,7 @@ import { compileJsLatex } from '~/index.js';
 test('compiles JSLaTeX', async () => {
 	const jsLatex = outdent.string(String.raw`
 		\documentclass{article}
-		<%= "Hello from EJS!" %>
+		<?= "Hello from EJS!" ?>
 	`);
 
 	const latex = await compileJsLatex({ latex: jsLatex });

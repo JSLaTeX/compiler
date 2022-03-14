@@ -10,7 +10,7 @@ function r(regexString: string) {
 		.join('');
 }
 
-const tagDelimeters = ['%', '?'];
+const tagDelimeters = ['?'];
 
 function getRepository() {
 	const ejsBeginTag = (delimiter: string) =>
@@ -19,11 +19,11 @@ function getRepository() {
 		`[_-]?${escapeStringRegexp(delimiter)}>`;
 
 	return {
-		// Comments that use the EJS <%# tag
+		// Comments that use the EJS <?# tag
 		'tag-block-comment': {
 			name: 'comment.block.ejs',
 			contentName: 'comment.block.js',
-			begin: '<([%?])#',
+			begin: '<(\\?)#',
 			beginCaptures: {
 				'0': {
 					name: 'punctuation.definition.comment.js',

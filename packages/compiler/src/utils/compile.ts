@@ -6,7 +6,7 @@ type CompileJsLatexProps = {
 };
 
 export async function compileJsLatex(props: CompileJsLatexProps) {
-	const template = ejs.compile(props.latex, { async: true });
+	const template = ejs.compile(props.latex, { async: true, delimiter: '?' });
 	const latexString = await template();
 
 	return latexString;
