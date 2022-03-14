@@ -1,3 +1,14 @@
+import { outdent } from 'outdent';
+
+// https://stackoverflow.com/a/34755045
+function r(regexString: string) {
+	return regexString
+		.split('\n')
+		.map((line) => line.trim())
+		.filter((line) => line !== '') // don't include empty lines
+		.join('');
+}
+
 function getRepository() {
 	const ejsBeginTag = '<%[_=-]?';
 	const ejsEndTag = '[_-]?%>';
@@ -21,9 +32,7 @@ function getRepository() {
 			},
 		},
 		'tag-ejs': {
-			name: 'meta.block.ejs',
 			// The content between the EJS tags is matched as JavaScript
-			contentName: 'source.js',
 			begin: ejsBeginTag,
 			beginCaptures: {
 				'0': {
@@ -37,30 +46,29 @@ function getRepository() {
 				},
 			},
 			// Matched against the part between the begin and end matches
-			patterns: [{ include: 'source.js' }],
+			patterns: [
+				{
+					contentName: 'meta.embedded.js',
+					begin: String.raw`(^|\G)(\s*)(.*)`,
+					while: String.raw`(?:^|\G)(?!${ejsEndTag})`,
+					patterns: [{ include: 'source.js' }],
+				},
+			],
 		},
 	};
 }
 
 export default function getConfigString() {
-	// https://stackoverflow.com/a/34755045
-	// function r(regexString: string) {
-	// 	return regexString
-	// 		.split('\n')
-	// 		.map((line) => line.trim())
-	// 		.filter((line) => line !== '') // don't include empty lines
-	// 		.join('');
-	// }
-
 	const config = {
 		name: 'JSLaTeX File',
 		scopeName: 'text.tex.latex.jslatex',
 		fileTypes: ['jtex'],
-		patterns: [
-			{ include: 'text.tex.latex' },
-			{ include: '#tag-block-comment' },
-			{ include: '#tag-ejs' },
-		],
+		injections: {
+			'L:text.tex.latex': {
+				name: 'meta.embedded.ejs',
+				patterns: [{ include: '#tag-block-comment' }, { include: '#tag-ejs' }],
+			},
+		},
 		repository: getRepository(),
 	};
 

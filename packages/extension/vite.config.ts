@@ -5,6 +5,7 @@ import { join } from 'desm';
 import { defineConfig } from 'vite';
 import tmLanguage from './syntaxes/JSLaTeX.tmLanguage.js';
 import languageConfiguration from './syntaxes/jslatex-language-configuration.js';
+import chalk from 'chalk';
 
 function buildSyntax() {
 	return {
@@ -23,6 +24,7 @@ function buildSyntax() {
 					languageConfiguration()
 				),
 			]);
+			console.info(chalk.greenBright('\nSyntax updated.'));
 		},
 	};
 }
