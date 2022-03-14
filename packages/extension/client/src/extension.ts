@@ -1,3 +1,4 @@
+import * as path from 'node:path';
 import type { CompletionList, ExtensionContext } from 'vscode';
 import { workspace, commands, Uri } from 'vscode';
 import {
@@ -13,9 +14,10 @@ import { getJavascriptVirtualContent } from './utils/ejs.js';
 let client: LanguageClient;
 
 export async function activate(context: ExtensionContext) {
+	console.log('monkeee');
 	await commands.executeCommand('latex-workshop.tab');
 
-	const serverModule = context.asAbsolutePath('server.cjs');
+	const serverModule = context.asAbsolutePath(path.join('dist', 'server.cjs'));
 
 	const debugOptions = { execArgv: ['--nolazy', '--inspect=6009'] };
 

@@ -17,6 +17,7 @@
 	"scripts": {
 		"prepare": "lion-git-hooks",
 		"watch:extension": "pnpm run watch --filter=./packages/extension",
+		"build:extension": "pnpm run build --filter=./packages/extension",
 		"test": "pnpm recursive run test",
 		"lint": "pnpm recursive run lint",
 		"prettier": "pnpm recursive run prettier",

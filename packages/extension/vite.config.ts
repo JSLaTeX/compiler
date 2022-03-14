@@ -1,3 +1,4 @@
+import { builtinModules } from 'node:module';
 import * as path from 'node:path';
 import * as fs from 'node:fs';
 import { join } from 'desm';
@@ -37,6 +38,10 @@ export default defineConfig({
 		target: 'node16',
 		outDir: 'dist',
 		minify: false,
+		lib: {
+			entry: './client/src/extension.ts',
+			formats: ['cjs'],
+		},
 		rollupOptions: {
 			input: {
 				server: path.resolve(__dirname, 'server'),
@@ -47,7 +52,7 @@ export default defineConfig({
 				format: 'cjs',
 				entryFileNames: '[name].cjs',
 			},
-			external: ['vscode'],
+			external: [/vscode/, ...builtinModules.flatMap((p) => [p, `node:${p}`])],
 		},
 		emptyOutDir: true,
 	},
