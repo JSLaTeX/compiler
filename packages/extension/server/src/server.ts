@@ -11,9 +11,18 @@ connection.onInitialize((_params: InitializeParams) => ({
 	capabilities: {
 		textDocumentSync: TextDocumentSyncKind.Full,
 		completionProvider: {
-			resolveProvider: false,
+			resolveProvider: true,
 		},
 	},
 }));
+
+connection.onCompletion(() => {
+	return null;
+});
+
+// Prevents "Unhandled method completionItem/resolve" errors
+connection.onCompletionResolve(() => {
+	return undefined as any;
+});
 
 connection.listen();

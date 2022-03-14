@@ -29,18 +29,18 @@
 	],
 	"main": "./dist/extension.cjs",
 	"activationEvents": [
-		"onLanguage:jslatex"
+		"onLanguage:latex"
 	],
 	"contributes": {
 		"languages": [
 			{
-				"id": "jslatex",
+				"id": "latex",
 				"aliases": [
 					"JSLaTeX",
 					"jslatex"
 				],
 				"extensions": [
-					".jtex"
+					".tex"
 				],
 				"configuration": "./dist/syntaxes/jslatex-language-configuration.json",
 				"icon": {
@@ -51,7 +51,7 @@
 		],
 		"grammars": [
 			{
-				"language": "jslatex",
+				"language": "latex",
 				"scopeName": "text.tex.latex.jslatex",
 				"path": "./dist/syntaxes/JSLaTeX.tmLanguage.json",
 				"embeddedLanguages": {

@@ -31,7 +31,7 @@ export async function activate(context: ExtensionContext) {
 
 	const virtualDocumentContents = new Map<string, string>();
 
-	workspace.registerTextDocumentContentProvider('embedded-content', {
+	workspace.registerTextDocumentContentProvider('jslatex-embedded-content', {
 		provideTextDocumentContent(uri) {
 			// Removing the `/file://` prefix
 			const filePath = uri.path.slice(8);
@@ -41,48 +41,44 @@ export async function activate(context: ExtensionContext) {
 				uri.path.slice(1, 8) + path.join(path.parse(filePath).dir, filename);
 			const decodedUri = decodeURIComponent(originalUri);
 			const virtualDocumentText = virtualDocumentContents.get(decodedUri);
-			console.log('h', virtualDocumentText);
 			return virtualDocumentText;
 		},
 	});
 
 	const clientOptions: LanguageClientOptions = {
-		documentSelector: [{ scheme: 'file', language: 'jslatex' }],
+		documentSelector: [{ scheme: 'file', language: 'latex' }],
 		middleware: {
 			// eslint-disable-next-line max-params
 			async provideCompletionItem(document, position, context, token, next) {
-				const originalUri = document.uri.toString();
-				let virtualDocumentText: string;
-				let vdocUriString: string;
-
+				// Forward the request to LaTeX workshop if we're not inside an EJS region
 				if (
-					isInsideEjsRegion({
+					!isInsideEjsRegion({
 						documentText: document.getText(),
 						offset: document.offsetAt(position),
 					})
 				) {
-					virtualDocumentText = getJavascriptVirtualContent(document.getText());
-					vdocUriString = `embedded-content://js/${encodeURIComponent(
-						originalUri
-					)}.js`;
+					return next(document, position, context, token);
 				}
-				// Inside LaTeX region
-				else {
-					virtualDocumentText = getLatexVirtualContent(document.getText());
-					vdocUriString = `embedded-content://latex/${encodeURIComponent(
-						originalUri
-					)}.tex`;
-				}
+
+				const originalUri = document.uri.toString();
+				const virtualDocumentText = getJavascriptVirtualContent(
+					document.getText()
+				);
+				const vdocUriString = `jslatex-embedded-content://js/${encodeURIComponent(
+					originalUri
+				)}.js`;
 
 				virtualDocumentContents.set(originalUri, virtualDocumentText);
 				const vdocUri = Uri.parse(vdocUriString);
 
-				return commands.executeCommand<CompletionList>(
+				const completionList = await commands.executeCommand<CompletionList>(
 					'vscode.executeCompletionItemProvider',
 					vdocUri,
 					position,
 					context.triggerCharacter
 				);
+
+				return completionList;
 			},
 		},
 	};
