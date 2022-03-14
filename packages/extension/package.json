@@ -76,6 +76,7 @@
 		"@types/vscode": "^1.62.0",
 		"chalk": "^5.0.1",
 		"dot-prop": "^7.2.0",
+		"escape-string-regexp": "^5.0.0",
 		"inquirer": "^8.2.1",
 		"inquirer-press-to-continue": "^1.0.8",
 		"outdent": "^0.8.0",

@@ -14,5 +14,7 @@ module.exports = defineConfig({
 				],
 			},
 		],
+		// Not supported in VSCode extension clients
+		'unicorn/prefer-node-protocol': 'off'
 	},
 });
