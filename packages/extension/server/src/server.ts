@@ -11,7 +11,7 @@ connection.onInitialize((_params: InitializeParams) => ({
 	capabilities: {
 		textDocumentSync: TextDocumentSyncKind.Full,
 		completionProvider: {
-			resolveProvider: true,
+			resolveProvider: false,
 		},
 	},
 }));
