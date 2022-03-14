@@ -32,8 +32,6 @@ export function getVirtualDocumentTextSections({
 		substituteWithWhitespace(oldContent.slice(currentPos))
 	);
 
-	console.log(virtualDocumentTextSections)
-
 	return virtualDocumentTextSections;
 }
 

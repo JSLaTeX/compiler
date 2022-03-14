@@ -33,9 +33,16 @@ export async function activate(context: ExtensionContext) {
 
 	workspace.registerTextDocumentContentProvider('embedded-content', {
 		provideTextDocumentContent(uri) {
-			const originalUri = uri.path.slice(1).slice(0, -4);
+			// Removing the `/file://` prefix
+			const filePath = uri.path.slice(8);
+			const filename = path.parse(filePath).name;
+			// Reconstructing the file prefix without the extra file extension
+			const originalUri =
+				uri.path.slice(1, 8) + path.join(path.parse(filePath).dir, filename);
 			const decodedUri = decodeURIComponent(originalUri);
-			return virtualDocumentContents.get(decodedUri);
+			const virtualDocumentText = virtualDocumentContents.get(decodedUri);
+			console.log('h', virtualDocumentText);
+			return virtualDocumentText;
 		},
 	});
 
@@ -67,6 +74,7 @@ export async function activate(context: ExtensionContext) {
 					)}.tex`;
 				}
 
+				virtualDocumentContents.set(originalUri, virtualDocumentText);
 				const vdocUri = Uri.parse(vdocUriString);
 
 				return commands.executeCommand<CompletionList>(
@@ -86,8 +94,8 @@ export async function activate(context: ExtensionContext) {
 		clientOptions
 	);
 
-	console.info('Starting client...');
 	client.start();
+	console.info('Client started.');
 }
 
 export async function deactivate() {

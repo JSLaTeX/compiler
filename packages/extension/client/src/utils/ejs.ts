@@ -15,7 +15,7 @@ export function isInsideEjsRegion({
 	for (const textRegion of documentTextRegions.filter(
 		(region) => region.languageId === 'js'
 	)) {
-		if (offset > textRegion.start && offset < textRegion.end) {
+		if (offset > textRegion.start && offset <= textRegion.end) {
 			return true;
 		}
 	}

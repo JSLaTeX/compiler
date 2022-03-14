@@ -48,13 +48,14 @@ export function getDocumentTextRegions(documentText: string) {
 		}
 	}
 
-	if (lastSectionEndTagMatch !== undefined) {
-		regions.push({
-			start: lastSectionEndTagMatch.index! + lastSectionEndTagMatch[0]!.length,
-			end: documentText.length,
-			languageId: 'latex',
-		});
-	}
+	regions.push({
+		start:
+			lastSectionEndTagMatch === undefined
+				? 0
+				: lastSectionEndTagMatch.index! + lastSectionEndTagMatch[0]!.length,
+		end: documentText.length,
+		languageId: 'latex',
+	});
 
 	return regions;
 }
