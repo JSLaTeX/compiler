@@ -90,16 +90,12 @@ export default function getConfigString() {
 		name: 'JSLaTeX File',
 		scopeName: 'text.tex.latex.jslatex',
 		fileTypes: ['jtex'],
-		injections: {
-			'L:text.tex.latex': {
-				name: 'meta.embedded.ejs',
-				patterns: [
-					{ include: '#tag-block-comment' },
-					{ include: '#single-line-tag-ejs' },
-					{ include: '#tag-ejs' },
-				],
-			},
-		},
+		patterns: [
+			{ include: '#tag-block-comment' },
+			{ include: '#single-line-tag-ejs' },
+			{ include: '#tag-ejs' },
+			{ include: 'text.tex.latex' },
+		],
 		repository: getRepository(),
 	};
 
