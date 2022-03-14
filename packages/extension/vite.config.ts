@@ -1,4 +1,5 @@
 import { builtinModules } from 'node:module';
+import * as process from 'node:process';
 import * as path from 'node:path';
 import * as fs from 'node:fs';
 import { join } from 'desm';
@@ -50,9 +51,9 @@ export default defineConfig({
 				extension: join(import.meta.url, 'client'),
 			},
 			output: {
-				chunkFileNames: '[name].cjs',
+				chunkFileNames: process.env.RELEASE ? '[name].cjs.js' : '[name].cjs',
 				format: 'cjs',
-				entryFileNames: '[name].cjs',
+				entryFileNames: process.env.RELEASE ? '[name].cjs.js' : '[name].cjs',
 			},
 			external: [/vscode/, ...builtinModules.flatMap((p) => [p, `node:${p}`])],
 		},

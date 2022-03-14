@@ -16,7 +16,7 @@ inquirer.registerPrompt('press-to-continue', PressToContinuePrompt);
 
 rmDist();
 chProjectDir(import.meta.url);
-exec('pnpm build', { stdio: 'inherit' });
+exec('pnpm build', { stdio: 'inherit', env: { RELEASE: '1' } });
 copyPackageFiles();
 
 const monorepoDir = getProjectDir(import.meta.url, { monorepoRoot: true });
@@ -32,6 +32,8 @@ const pkg = JSON.parse(fs.readFileSync('package.json', 'utf-8')) as Record<
 	string,
 	unknown
 >;
+
+setProperty(pkg, 'module', false);
 for (const property of deepKeys(pkg)) {
 	// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
 	const value = getProperty(pkg, property) as unknown;
@@ -52,6 +54,8 @@ fs.copyFileSync(
 
 process.chdir(distDir);
 
+exec('npm install', { stdio: 'inherit' });
+
 await inquirer.prompt({
 	name: 'response',
 	pressToContinueMessage:
@@ -59,5 +63,6 @@ await inquirer.prompt({
 	type: 'press-to-continue',
 	enter: true,
 });
+
 exec('vsce package', { stdio: 'inherit' });
 exec('vsce publish', { stdio: 'inherit' });
