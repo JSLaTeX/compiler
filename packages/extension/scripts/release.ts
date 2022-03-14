@@ -8,8 +8,7 @@ import {
 	getProjectDir,
 	rmDist,
 } from 'lion-system';
-import editJsonFile from 'edit-json-file';
-import { deepKeys, getProperty } from 'dot-prop';
+import { deepKeys, getProperty, setProperty } from 'dot-prop';
 
 rmDist();
 chProjectDir(import.meta.url);
@@ -20,26 +19,24 @@ const monorepoDir = getProjectDir(import.meta.url, { monorepoRoot: true });
 const distDir = path.join(getProjectDir(import.meta.url), 'dist');
 
 fs.copyFileSync(
-	path.join(monorepoDir, 'readme.md'),
-	path.join(distDir, 'readme.md')
-);
-fs.copyFileSync(
 	path.join(monorepoDir, 'license'),
 	path.join(distDir, 'license')
 );
 
 // Update dist-pointing paths
-const pkg = editJsonFile('package.json');
-const pkgJson = pkg.read();
-for (const property of deepKeys(pkgJson)) {
-	// eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
-	const value = getProperty(pkgJson, property) as unknown;
+const pkg = JSON.parse(fs.readFileSync('package.json', 'utf-8')) as Record<
+	string,
+	unknown
+>;
+for (const property of deepKeys(pkg)) {
+	// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+	const value = getProperty(pkg, property) as unknown;
 	if (typeof value === 'string' && value.startsWith('./dist')) {
-		pkg.set(property, value.replace(/^\.\/dist/, ''));
+		setProperty(pkg, property, value.replace(/^\.\/dist\//, './'));
 	}
 }
 
-pkg.save();
+fs.writeFileSync('dist/package.json', JSON.stringify(pkg, null, '\t'));
 
 const iconsDir = path.join(distDir, 'icons');
 
@@ -51,5 +48,5 @@ fs.copyFileSync(
 
 process.chdir(distDir);
 
-exec('vsce package', { stdio: 'inherit' });
-exec('vsce publish', { stdio: 'inherit' });
+// exec('vsce package', { stdio: 'inherit' });
+// exec('vsce publish', { stdio: 'inherit' });

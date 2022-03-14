@@ -1,93 +1,86 @@
 {
-  "name": "jslatex",
-  "displayName": "JSLaTeX",
-  "description": "Supercharge your LaTeX files with JavaScript!",
-  "icon": "icons/icon.png",
-  "type": "module",
-  "version": "0.0.1",
-  "publisher": "leonzalion",
-  "license": "MIT",
-  "homepage": "https://github.com/leonzalion/JSLaTeX",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/leonzalion/JSLaTeX.git"
-  },
-  "engines": {
-    "vscode": "^1.62.0"
-  },
-  "categories": [
-    "Programming Languages",
-    "Snippets",
-    "Linters",
-    "Formatters"
-  ],
-  "keywords": [
-    "latex",
-    "tex",
-    "ejs",
-    "compile"
-  ],
-  "main": "/extension.cjs",
-  "activationEvents": [
-    "onLanguage:latex"
-  ],
-  "contributes": {
-    "languages": [
-      {
-        "id": "latex",
-        "aliases": [
-          "JSLaTeX",
-          "jslatex"
-        ],
-        "extensions": [
-          ".tex"
-        ],
-        "configuration": "./dist/syntaxes/jslatex-language-configuration.json",
-        "icon": {
-          "light": "./icons/jslatex.png",
-          "dark": "./icons/jslatex.png"
-        }
-      }
-    ],
-    "grammars": [
-      {
-        "language": "latex",
-        "scopeName": "text.tex.latex.jslatex",
-        "path": "./dist/syntaxes/JSLaTeX.tmLanguage.json",
-        "embeddedLanguages": {
-          "source.js": "javascript",
-          "meta.embedded.block.latex": "latex"
-        }
-      }
-    ],
-    "languages[0]": {
-      "configuration": "/syntaxes/jslatex-language-configuration.json"
-    },
-    "grammars[0]": {
-      "path": "/syntaxes/JSLaTeX.tmLanguage.json"
-    }
-  },
-  "scripts": {
-    "watch": "vite build --watch",
-    "release": "node-ts ./scripts/release.ts",
-    "build": "vite build",
-    "build:syntax": "node-ts ./scripts/build-syntax.ts",
-    "prettier": "prettier --write .",
-    "lint": "eslint --cache --fix .",
-    "tc": "tsc --noEmit"
-  },
-  "devDependencies": {
-    "@types/edit-json-file": "^1.7.0",
-    "@types/vscode": "^1.62.0",
-    "chalk": "^5.0.1",
-    "dot-prop": "^7.2.0",
-    "edit-json-file": "^1.7.0",
-    "outdent": "^0.8.0",
-    "vite": "^2.8.6",
-    "vsce": "^2.7.0"
-  },
-  "dependencies": {
-    "vscode-languageclient": "^6.1.3",
-    "vscode-languageserver": "^6.1.1"
-  }
+	"name": "jslatex",
+	"displayName": "JSLaTeX",
+	"description": "Supercharge your LaTeX files with JavaScript!",
+	"icon": "./icons/icon.png",
+	"type": "module",
+	"version": "0.0.1",
+	"publisher": "leonzalion",
+	"license": "MIT",
+	"homepage": "https://github.com/leonzalion/JSLaTeX",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/leonzalion/JSLaTeX.git"
+	},
+	"engines": {
+		"vscode": "^1.62.0"
+	},
+	"categories": [
+		"Programming Languages",
+		"Snippets",
+		"Linters",
+		"Formatters"
+	],
+	"keywords": [
+		"latex",
+		"tex",
+		"ejs",
+		"compile"
+	],
+	"main": "./dist/extension.cjs",
+	"activationEvents": [
+		"onLanguage:latex"
+	],
+	"contributes": {
+		"languages": [
+			{
+				"id": "latex",
+				"aliases": [
+					"JSLaTeX",
+					"jslatex"
+				],
+				"extensions": [
+					".tex"
+				],
+				"configuration": "./dist/syntaxes/jslatex-language-configuration.json",
+				"icon": {
+					"light": "./icons/jslatex.png",
+					"dark": "./icons/jslatex.png"
+				}
+			}
+		],
+		"grammars": [
+			{
+				"language": "latex",
+				"scopeName": "text.tex.latex.jslatex",
+				"path": "./dist/syntaxes/JSLaTeX.tmLanguage.json",
+				"embeddedLanguages": {
+					"source.js": "javascript",
+					"meta.embedded.block.latex": "latex"
+				}
+			}
+		]
+	},
+	"scripts": {
+		"watch": "vite build --watch",
+		"release": "node-ts ./scripts/release.ts",
+		"build": "vite build",
+		"build:syntax": "node-ts ./scripts/build-syntax.ts",
+		"prettier": "prettier --write .",
+		"lint": "eslint --cache --fix .",
+		"tc": "tsc --noEmit"
+	},
+	"devDependencies": {
+		"@types/edit-json-file": "^1.7.0",
+		"@types/vscode": "^1.65.0",
+		"chalk": "^5.0.1",
+		"dot-prop": "^7.2.0",
+		"outdent": "^0.8.0",
+		"vite": "^2.8.6",
+		"vsce": "^2.7.0"
+	},
+	"dependencies": {
+		"vscode-languageclient": "^6.1.3",
+		"vscode-languageserver": "^6.1.1"
+	}
 }
