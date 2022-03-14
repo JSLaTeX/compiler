@@ -10,7 +10,7 @@ module.exports = defineConfig({
 			{
 				packageDir: [
 					path.resolve(__dirname, '..'),
-					path.resolve(__dirname, '../../..')
+					path.resolve(__dirname, '../../..'),
 				],
 			},
 		],

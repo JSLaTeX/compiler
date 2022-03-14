@@ -1,6 +1,4 @@
-import {
-	getVirtualDocumentTextSections,
-} from '~client/utils/document.js';
+import { getVirtualDocumentTextSections } from '~client/utils/document.js';
 import { getDocumentTextRegions } from '~client/utils/regions.js';
 
 export function getLatexVirtualContent(documentText: string) {

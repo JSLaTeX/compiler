@@ -3,18 +3,10 @@
 	"compilerOptions": {
 		"outDir": "dist",
 		"paths": {
-			"~client/*": [
-				"./client/src/*",
-			],
-			"~server/*": [
-				"./server/src/*",
-			]
+			"~client/*": ["./client/src/*"],
+			"~server/*": ["./server/src/*"]
 		}
 	},
-	"include": [
-		"./client",
-		"./server",
-		"./syntaxes", "vite.config.ts",
-	],
+	"include": ["./client", "./server", "./syntaxes", "vite.config.ts"],
 	"exclude": []
 }
