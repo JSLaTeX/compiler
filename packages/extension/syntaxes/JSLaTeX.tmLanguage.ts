@@ -55,6 +55,34 @@ function getRepository() {
 				},
 			],
 		},
+		'single-line-tag-ejs': {
+			begin: r(
+				outdent.string(String.raw`
+					(${ejsBeginTag})
+					(
+						(?:
+							(?!${ejsEndTag}).
+						)+
+					)
+					(?=${ejsEndTag})
+				`)
+			),
+			beginCaptures: {
+				'1': {
+					name: 'punctuation.section.embedded.begin.php',
+				},
+				'2': {
+					name: 'meta.embedded.ejs',
+					patterns: [{ include: 'source.js' }],
+				},
+			},
+			end: ejsEndTag,
+			endCaptures: {
+				'0': {
+					name: 'punctuation.section.embedded.end.php',
+				},
+			},
+		},
 	};
 }
 
@@ -66,7 +94,11 @@ export default function getConfigString() {
 		injections: {
 			'L:text.tex.latex': {
 				name: 'meta.embedded.ejs',
-				patterns: [{ include: '#tag-block-comment' }, { include: '#tag-ejs' }],
+				patterns: [
+					{ include: '#tag-block-comment' },
+					{ include: '#single-line-tag-ejs' },
+					{ include: '#tag-ejs' },
+				],
 			},
 		},
 		repository: getRepository(),
