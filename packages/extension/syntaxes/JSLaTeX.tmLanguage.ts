@@ -32,7 +32,6 @@ function getRepository() {
 			},
 		},
 		'tag-ejs': {
-			// The content between the EJS tags is matched as JavaScript
 			begin: ejsBeginTag,
 			beginCaptures: {
 				'0': {
@@ -49,7 +48,7 @@ function getRepository() {
 			patterns: [
 				{
 					contentName: 'meta.embedded.js',
-					begin: String.raw`(^|\G)(\s*)(.*)`,
+					begin: String.raw`(?:^|\G)(\s*)(.*)`,
 					while: String.raw`(?:^|\G)(?!${ejsEndTag})`,
 					patterns: [{ include: 'source.js' }],
 				},
