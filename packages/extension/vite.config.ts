@@ -3,9 +3,9 @@ import * as path from 'node:path';
 import * as fs from 'node:fs';
 import { join } from 'desm';
 import { defineConfig } from 'vite';
+import chalk from 'chalk';
 import tmLanguage from './syntaxes/JSLaTeX.tmLanguage.js';
 import languageConfiguration from './syntaxes/jslatex-language-configuration.js';
-import chalk from 'chalk';
 
 function buildSyntax() {
 	return {
@@ -46,8 +46,8 @@ export default defineConfig({
 		},
 		rollupOptions: {
 			input: {
-				server: path.resolve(__dirname, 'server'),
-				extension: path.resolve(__dirname, 'client'),
+				server: join(import.meta.url, 'server'),
+				extension: join(import.meta.url, 'client'),
 			},
 			output: {
 				chunkFileNames: '[name].cjs',

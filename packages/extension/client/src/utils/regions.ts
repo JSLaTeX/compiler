@@ -14,8 +14,8 @@ export function getDocumentTextRegions(documentText: string) {
 	];
 
 	let insideEjsSection = false;
-	let currentSectionBeginTagMatch: RegExpMatchArray | undefined = undefined;
-	let lastSectionEndTagMatch: RegExpMatchArray | undefined = undefined;
+	let currentSectionBeginTagMatch: RegExpMatchArray | undefined;
+	let lastSectionEndTagMatch: RegExpMatchArray | undefined;
 
 	for (const tagMatch of tagMatches) {
 		const isBeginTag = tagMatch[1] !== undefined;

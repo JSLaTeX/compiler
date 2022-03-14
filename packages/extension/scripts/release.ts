@@ -9,7 +9,7 @@ import {
 	rmDist,
 } from 'lion-system';
 import editJsonFile from 'edit-json-file';
-import { deepKeys, getProperty, setProperty } from 'dot-prop';
+import { deepKeys, getProperty } from 'dot-prop';
 
 rmDist();
 chProjectDir(import.meta.url);
@@ -32,11 +32,13 @@ fs.copyFileSync(
 const pkg = editJsonFile('package.json');
 const pkgJson = pkg.read();
 for (const property of deepKeys(pkgJson)) {
+	// eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
 	const value = getProperty(pkgJson, property) as unknown;
 	if (typeof value === 'string' && value.startsWith('./dist')) {
 		pkg.set(property, value.replace(/^\.\/dist/, ''));
 	}
 }
+
 pkg.save();
 
 const iconsDir = path.join(distDir, 'icons');

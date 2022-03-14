@@ -1,15 +1,12 @@
-import * as path from 'path';
+import * as path from 'node:path';
 import type { CompletionList, ExtensionContext } from 'vscode';
 import { workspace, commands, Uri } from 'vscode';
-import {
-	LanguageClient,
+import type {
 	LanguageClientOptions,
 	ServerOptions,
-	TransportKind,
 } from 'vscode-languageclient';
-import { isInsideEjsRegion } from './utils/ejs.js';
-import { getLatexVirtualContent } from './utils/latex.js';
-import { getJavascriptVirtualContent } from './utils/ejs.js';
+import { LanguageClient, TransportKind } from 'vscode-languageclient';
+import { isInsideEjsRegion, getJavascriptVirtualContent } from './utils/ejs.js';
 
 let client: LanguageClient;
 

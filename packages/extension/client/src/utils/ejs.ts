@@ -31,10 +31,10 @@ export function getJavascriptVirtualContent(documentText: string): string {
 		languageId: 'js',
 		regions,
 	})
-		.map((section) => {
+		.map((section) =>
 			// Removing the start and end of the section
-			return section.replace(/^<%[_=-]?/, '').replace(/[_-]?%>$/, '');
-		})
+			section.replace(/^<%[_=-]?/, '').replace(/[_-]?%>$/, '')
+		)
 		.join('');
 
 	return javascriptVirtualContentSections;
