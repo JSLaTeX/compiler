@@ -54,7 +54,7 @@ importers:
   packages/extension:
     specifiers:
       '@types/edit-json-file': ^1.7.0
-      '@types/vscode': ^1.65.0
+      '@types/vscode': ^1.62.0
       chalk: ^5.0.1
       dot-prop: ^7.2.0
       edit-json-file: ^1.7.0
@@ -77,16 +77,10 @@ importers:
       vsce: 2.7.0
 
   packages/extension/client:
-    specifiers:
-      vscode-languageclient: ^6.1.3
-    dependencies:
-      vscode-languageclient: 6.1.4
+    specifiers: {}
 
   packages/extension/server:
-    specifiers:
-      vscode-languageserver: ^6.1.1
-    dependencies:
-      vscode-languageserver: 6.1.1
+    specifiers: {}
 
 packages:
 
