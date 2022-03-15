@@ -1,0 +1,93 @@
+// Vitest Snapshot v1
+
+exports[`compiles fixtures > chem.tex 1`] = `
+"\\\\documentclass{article}
+\\\\usepackage{float}
+
+
+
+\\\\begin{table}[H]
+  \\\\begin{tabularx}{\\\\linewidth}{|
+      >{\\\\RaggedRight}X|
+      >{\\\\RaggedRight}X|
+      >{\\\\RaggedRight}X|
+      >{\\\\RaggedRight}X|
+      >{\\\\RaggedRight}X|
+      >{\\\\RaggedRight}X|
+    }
+    \\\\hline
+    Trial \\\\#
+     & Volume of \\\\ce{CuSO4} /\\\\ml
+     & Baseline temperature /\\\\celsius
+     & Time of \\\\ce{Zn} addition /\\\\second
+     & Equation of cooling line
+     & R value
+    \\\\\\\\\\\\hline
+    
+      1
+      & 20
+      & 24.4
+      & 72
+      & -0.042 - 0.042$x$
+      & -0.992
+      \\\\\\\\\\\\hline
+    
+      2
+      & 20
+      & 24.2
+      & 132
+      & -0.052 - 0.052$x$
+      & -0.959
+      \\\\\\\\\\\\hline
+    
+      3
+      & 20
+      & 24.2
+      & 60
+      & -0.086 - 0.086$x$
+      & -0.993
+      \\\\\\\\\\\\hline
+    
+      4
+      & 20
+      & 24.8
+      & 72
+      & -0.005 - 0.005$x$
+      & -0.951
+      \\\\\\\\\\\\hline
+    
+      5
+      & 20
+      & 24.6
+      & 96
+      & -0.042 - 0.042$x$
+      & -0.996
+      \\\\\\\\\\\\hline
+    
+      6
+      & 20
+      & 23.1
+      & 14
+      & 0.006 + 0.006$x$
+      & 0.952
+      \\\\\\\\\\\\hline
+    
+      7
+      & 20
+      & 23.8
+      & 15
+      & -0.060 - 0.060$x$
+      & -0.897
+      \\\\\\\\\\\\hline
+    
+      8
+      & 20
+      & 24.6
+      & 96
+      & -0.029 - 0.029$x$
+      & -0.997
+      \\\\\\\\\\\\hline
+    
+  \\\\end{tabularx}
+\\\\end{table}"
+`;
