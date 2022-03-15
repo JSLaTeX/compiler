@@ -82,7 +82,7 @@ function getRepository() {
 						contentName: 'meta.embedded.js',
 						begin: String.raw`(?:^|\G).*`,
 						// the `.*` is needed so that we can have JS before the end tag
-						while: String.raw`(?:^|\G)((?!.*?${ejsEndTag(char)}))`,
+						while: String.raw`(?:^|\G)((?!.*${ejsEndTag(char)}))`,
 						patterns: [{ include: 'source.js' }],
 					},
 				],
