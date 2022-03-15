@@ -38,23 +38,49 @@ function getRepository() {
 		},
 		'tag-ejs': {
 			patterns: tagDelimeters.map((char) => ({
-				begin: ejsBeginTag(char),
+				begin: r(
+					outdent.string(String.raw`
+						(${ejsBeginTag(char)})
+						(
+							(?:
+								(?!${ejsEndTag(char)}).
+							)*
+						)
+					`)
+				),
 				beginCaptures: {
-					'0': {
-						name: 'punctuation.section.embedded.begin.php',
+					'1': {
+						name: 'punctuation.section.embedded.begin',
+					},
+					'2': {
+						name: 'meta.embedded.ejs',
+						patterns: [{ include: 'source.js' }],
 					},
 				},
-				end: ejsEndTag(char),
+				end: r(
+					outdent.string(String.raw`
+						(
+							(?:
+								(?!${ejsEndTag(char)}).
+							)*
+						)
+						(${ejsEndTag(char)})
+					`)
+				),
 				endCaptures: {
-					'0': {
-						name: 'punctuation.section.embedded.end.php',
+					'1': {
+						name: 'meta.embedded.ejs',
+						patterns: [{ include: 'source.js' }],
+					},
+					'2': {
+						name: 'punctuation.section.embedded.end',
 					},
 				},
 				// Matched against the part between the begin and end matches
 				patterns: [
 					{
 						contentName: 'meta.embedded.js',
-						begin: String.raw`(?:^|\G)(\s*)(.*)`,
+						begin: String.raw`(?:^|\G).*`,
 						while: String.raw`(?:^|\G)(?!${ejsEndTag(char)})`,
 						patterns: [{ include: 'source.js' }],
 					},
@@ -65,18 +91,18 @@ function getRepository() {
 			patterns: tagDelimeters.map((char) => ({
 				begin: r(
 					outdent.string(String.raw`
-					(${ejsBeginTag(char)})
-					(
-						(?:
-							(?!${ejsEndTag(char)}).
-						)+
-					)
-					(?=${ejsEndTag(char)})
-				`)
+						(${ejsBeginTag(char)})
+						(
+							(?:
+								(?!${ejsEndTag(char)}).
+							)+
+						)
+						(?=${ejsEndTag(char)})
+					`)
 				),
 				beginCaptures: {
 					'1': {
-						name: 'punctuation.section.embedded.begin.php',
+						name: 'punctuation.section.embedded.begin',
 					},
 					'2': {
 						name: 'meta.embedded.ejs',
@@ -86,7 +112,7 @@ function getRepository() {
 				end: ejsEndTag(char),
 				endCaptures: {
 					'0': {
-						name: 'punctuation.section.embedded.end.php',
+						name: 'punctuation.section.embedded.end',
 					},
 				},
 			})),

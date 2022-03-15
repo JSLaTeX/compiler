@@ -1,12 +1,8 @@
 export default function getConfigString() {
 	return JSON.stringify({
-		comments: {
-			blockComment: ['<%#', '%>'],
-		},
-		brackets: [['<', '>']],
-		autoClosingPairs: [{ open: '<%', close: '%>' }],
+		autoClosingPairs: [{ open: '<?', close: '?>' }],
 		folding: {
-			markers: { start: '^<%', end: '^%>' },
+			markers: { start: '^<?', end: '^?>' },
 		},
 	});
 }
