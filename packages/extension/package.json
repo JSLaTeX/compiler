@@ -34,13 +34,10 @@
 	"contributes": {
 		"languages": [
 			{
-				"id": "latex",
+				"id": "jslatex",
 				"aliases": [
 					"JSLaTeX",
 					"jslatex"
-				],
-				"extensions": [
-					".tex"
 				],
 				"configuration": "./dist/syntaxes/jslatex-language-configuration.json",
 				"icon": {
@@ -51,12 +48,23 @@
 		],
 		"grammars": [
 			{
-				"language": "latex",
 				"scopeName": "text.tex.latex.jslatex",
 				"path": "./dist/syntaxes/JSLaTeX.tmLanguage.json",
+				"injectTo": [
+					"text.tex.latex"
+				],
 				"embeddedLanguages": {
-					"source.js": "javascript",
-					"meta.embedded.block.latex": "latex"
+					"source.js": "javascript"
+				}
+			},
+			{
+				"scopeName": "markup.raw.verbatim.latex.jslatex",
+				"path": "./dist/syntaxes/JSLaTeX-verbatim.tmLanguage.json",
+				"injectTo": [
+					"text.tex.latex"
+				],
+				"embeddedLanguages": {
+					"source.js": "javascript"
 				}
 			}
 		]

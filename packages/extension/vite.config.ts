@@ -5,7 +5,8 @@ import * as fs from 'node:fs';
 import { join } from 'desm';
 import { defineConfig } from 'vite';
 import chalk from 'chalk';
-import tmLanguage from './syntaxes/JSLaTeX.tmLanguage.js';
+import jsLatex from './syntaxes/JSLaTeX.tmLanguage.js';
+import jsLatexVerbatim from './syntaxes/JSLaTeX-verbatim.tmLanguage.js';
 import languageConfiguration from './syntaxes/jslatex-language-configuration.js';
 
 function buildSyntax() {
@@ -18,7 +19,11 @@ function buildSyntax() {
 			await Promise.all([
 				fs.promises.writeFile(
 					path.join(syntaxDistDir, 'JSLaTeX.tmLanguage.json'),
-					tmLanguage()
+					jsLatex()
+				),
+				fs.promises.writeFile(
+					path.join(syntaxDistDir, 'JSLaTeX-verbatim.tmLanguage.json'),
+					jsLatexVerbatim()
 				),
 				fs.promises.writeFile(
 					path.join(syntaxDistDir, 'jslatex-language-configuration.json'),
