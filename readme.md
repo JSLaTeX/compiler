@@ -126,7 +126,8 @@ You can also use imports within EJS:
 <? const { default: cowsay } = await import('cowsay') ?>
 
 \begin{document}
-<?= cowsay.say({ text: 'LaTeX!' }) ?>
+<?# escapeLatex(latex: string) is a global helper function provided by JSLaTeX for escaping LaTeX strings (see https://www.npmjs.com/package/escape-latex) ?>
+<?= escapeLatex(cowsay.say({ text: 'LaTeX!' })) ?>
 \end{document}
 ```
 

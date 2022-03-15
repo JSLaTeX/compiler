@@ -105,6 +105,7 @@ exports[`compiles fixtures > cowsay.tex 1`] = `
 
 
 \\\\begin{document}
+
  \\\\_\\\\_\\\\_\\\\_\\\\_\\\\_\\\\_\\\\_
 &lt; LaTeX! &gt;
  --------
