@@ -1,0 +1,7 @@
+\documentclass{article}
+
+<? const { default: cowsay } = await import('cowsay') ?>
+
+\begin{document}
+<?= escapeLatex(cowsay.say({ text: 'LaTeX!' })) ?>
+\end{document}

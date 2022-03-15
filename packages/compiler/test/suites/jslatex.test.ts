@@ -1,9 +1,8 @@
 import * as path from 'node:path';
-import * as fs from 'node:fs';
 import { expect, test, describe } from 'vitest';
 import { outdent } from 'outdent';
 import { join } from 'desm';
-import { compileJsLatex } from '~/index.js';
+import { compileJsLatex, compileJsLatexFile } from '~/index.js';
 
 const fixturesDir = join(import.meta.url, '../fixtures');
 
@@ -41,10 +40,16 @@ test('compiles JSLaTeX with ramda', async () => {
 
 describe('compiles fixtures', () => {
 	test('chem.tex', async () => {
-		const chemTex = await fs.promises.readFile(
-			path.join(fixturesDir, 'chem.tex'),
-			'utf8'
-		);
-		expect(await compileJsLatex({ latex: chemTex })).toMatchSnapshot();
+		expect(
+			await compileJsLatexFile({ filePath: path.join(fixturesDir, 'chem.tex') })
+		).toMatchSnapshot();
+	});
+
+	test('cowsay.tex', async () => {
+		expect(
+			await compileJsLatexFile({
+				filePath: path.join(fixturesDir, 'cowsay.tex'),
+			})
+		).toMatchSnapshot();
 	});
 });

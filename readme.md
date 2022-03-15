@@ -117,3 +117,18 @@ Note that there is no trace of the original JavaScript code in the final LaTeX f
 This LaTeX can then be compiled by a standard LaTeX compiler like `pdflatex` or `lualatex` to produce the following PDF file:
 
 ![The compiled PDF for chem.tex](assets/chem-latex-pdf.png)
+
+You can also use imports within EJS:
+
+```latex
+\documentclass{article}
+
+<? const { default: cowsay } = await import('cowsay') ?>
+
+\begin{document}
+<?= cowsay.say({ text: 'LaTeX!' }) ?>
+\end{document}
+```
+
+The above JSLaTeX code gets compiled to:
+

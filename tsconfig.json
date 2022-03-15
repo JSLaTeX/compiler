@@ -2,6 +2,9 @@
 	"extends": "@leonzalion/configs/tsconfig.json",
 	"compilerOptions": {
 		"module": "esnext",
+		"lib": [
+			"es2021"
+		]
 	},
 	"exclude": [
 		"packages",

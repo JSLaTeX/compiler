@@ -1,6 +1,7 @@
 import * as fs from 'node:fs';
 import ejs from 'ejs';
 import * as R from 'ramda';
+import escapeLatex from 'escape-latex';
 
 type CompileJsLatexProps = {
 	latex: string;
@@ -9,7 +10,7 @@ type CompileJsLatexProps = {
 export async function compileJsLatex(props: CompileJsLatexProps) {
 	const latexString = ejs.render(
 		props.latex,
-		{ R },
+		{ R, escapeLatex },
 		{ async: true, delimiter: '?' }
 	);
 

@@ -95,5 +95,24 @@ exports[`compiles fixtures > chem.tex 1`] = `
 			
 		\\\\end{tabularx}
 	\\\\end{table}
-\\\\end{document}"
+\\\\end{document}
+"
+`;
+
+exports[`compiles fixtures > cowsay.tex 1`] = `
+"\\\\documentclass{article}
+
+
+
+\\\\begin{document}
+ \\\\_\\\\_\\\\_\\\\_\\\\_\\\\_\\\\_\\\\_
+&lt; LaTeX! &gt;
+ --------
+        \\\\textbackslash{}   \\\\textasciicircum{}\\\\_\\\\_\\\\textasciicircum{}
+         \\\\textbackslash{}  (oo)\\\\textbackslash{}\\\\_\\\\_\\\\_\\\\_\\\\_\\\\_\\\\_
+            (\\\\_\\\\_)\\\\textbackslash{}       )\\\\textbackslash{}/\\\\textbackslash{}
+                ||----w |
+                ||     ||
+\\\\end{document}
+"
 `;
