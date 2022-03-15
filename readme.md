@@ -8,7 +8,7 @@ Supercharging LaTeX with JavaScript through [EJS](https://ejs.co)!
 
 ## Usage
 
-The following [chem.tex](packages/compiler/test/fixtures/chem.tex) file:
+The following [chem.tex](packages/compiler/test/fixtures/chem.tex) file (syntax highlighting provided by the [JSLaTeX VSCode extension](https://marketplace.visualstudio.com/items?itemName=leonzalion.jslatex)):
 
 ![Chemistry LaTeX file example](assets/chem-latex.png)
 
