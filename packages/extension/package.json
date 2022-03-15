@@ -4,7 +4,7 @@
 	"description": "Supercharge your LaTeX files with JavaScript!",
 	"icon": "icons/icon.png",
 	"type": "module",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"publisher": "leonzalion",
 	"license": "MIT",
 	"homepage": "https://github.com/leonzalion/JSLaTeX",
@@ -50,9 +50,7 @@
 			{
 				"scopeName": "text.tex.latex.jslatex",
 				"path": "./dist/syntaxes/JSLaTeX.tmLanguage.json",
-				"injectTo": [
-					"text.tex.latex"
-				],
+				"language": "latex",
 				"embeddedLanguages": {
 					"source.js": "javascript"
 				}
