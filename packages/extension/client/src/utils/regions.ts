@@ -3,10 +3,10 @@ import type { EmbeddedRegion } from '~client/types.js';
 export function getDocumentTextRegions(documentText: string) {
 	const regions: EmbeddedRegion[] = [];
 
-	const ejsBeginTag = '<%[_=-]?';
-	const ejsEndTag = '[_-]?%>';
+	const ejsBeginTag = String.raw`<\?[_=-]?`;
+	const ejsEndTag = String.raw`[_-]?\?>`;
 
-	// Match starting `<%` and ending `%>`
+	// Match starting `<?` and ending `?>`
 	const tagMatches = [
 		...documentText.matchAll(
 			new RegExp(`(${ejsBeginTag})|(${ejsEndTag})`, 'g')

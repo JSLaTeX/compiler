@@ -33,7 +33,7 @@ export function getJavascriptVirtualContent(documentText: string): string {
 	})
 		.map((section) =>
 			// Removing the start and end of the section
-			section.replace(/^<%[_=-]?/, '').replace(/[_-]?%>$/, '')
+			section.replace(/^<\?[_=-]?/, '').replace(/[_-]?\?>$/, '')
 		)
 		.join('');
 
