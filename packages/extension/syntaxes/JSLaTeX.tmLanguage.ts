@@ -14,7 +14,7 @@ const tagDelimeters = ['?'];
 
 function getRepository() {
 	const ejsBeginTag = (delimiter: string) =>
-		`<${escapeStringRegexp(delimiter)}?[_=-]`;
+		`<${escapeStringRegexp(delimiter)}[_=-]?`;
 	const ejsEndTag = (delimiter: string) =>
 		`[_-]?${escapeStringRegexp(delimiter)}>`;
 
