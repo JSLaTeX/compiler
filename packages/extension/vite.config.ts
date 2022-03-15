@@ -55,9 +55,15 @@ export default defineConfig({
 				extension: join(import.meta.url, 'client'),
 			},
 			output: {
-				chunkFileNames: process.env.RELEASE ? '[name].cjs.js' : '[name].cjs',
+				chunkFileNames:
+					process.env.NODE_ENV === 'production'
+						? '[name].cjs.js'
+						: '[name].cjs',
 				format: 'cjs',
-				entryFileNames: process.env.RELEASE ? '[name].cjs.js' : '[name].cjs',
+				entryFileNames:
+					process.env.NODE_ENV === 'production'
+						? '[name].cjs.js'
+						: '[name].cjs',
 			},
 			external: [/vscode/, ...builtinModules.flatMap((p) => [p, `node:${p}`])],
 		},

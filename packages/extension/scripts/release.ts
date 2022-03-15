@@ -17,7 +17,7 @@ inquirer.registerPrompt('press-to-continue', PressToContinuePrompt);
 
 rmDist();
 chProjectDir(import.meta.url);
-exec('pnpm build', { stdio: 'inherit', env: { RELEASE: '1' } });
+exec('pnpm build:release', { stdio: 'inherit' });
 copyPackageFiles();
 
 const monorepoDir = getProjectDir(import.meta.url, { monorepoRoot: true });

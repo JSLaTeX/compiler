@@ -72,7 +72,8 @@
 	"scripts": {
 		"watch": "vite build --watch",
 		"release": "node-ts ./scripts/release.ts",
-		"build": "vite build",
+		"build": "vite build --mode=development",
+		"build:release": "vite build",
 		"build:syntax": "node-ts ./scripts/build-syntax.ts",
 		"prettier": "prettier --write .",
 		"lint": "eslint --cache --fix .",

@@ -13,7 +13,10 @@ let client: LanguageClient;
 export async function activate(context: ExtensionContext) {
 	await commands.executeCommand('latex-workshop.tab');
 
-	const serverModule = context.asAbsolutePath(path.join('dist', 'server.cjs'));
+	const serverPath =
+		// eslint-disable-next-line node/prefer-global/process
+		process.env.NODE_ENV === 'production' ? 'server.cjs' : 'dist/server.cjs';
+	const serverModule = context.asAbsolutePath(serverPath);
 
 	const debugOptions = { execArgv: ['--nolazy', '--inspect=6009'] };
 
