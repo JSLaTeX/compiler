@@ -32,7 +32,7 @@ const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8')) as Record<
 	string,
 	unknown
 >;
-setProperty(pkg, 'module', false);
+setProperty(pkg, 'type', 'commonjs');
 rewriteDistPaths(pkg);
 fs.writeFileSync('dist/package.json', JSON.stringify(pkg, null, '\t'));
 
