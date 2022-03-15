@@ -46,7 +46,7 @@ fs.copyFileSync(
 
 process.chdir(distDir);
 
-exec('npm install', { stdio: 'inherit' });
+exec('npm install --only=production', { stdio: 'inherit' });
 
 await inquirer.prompt({
 	name: 'response',

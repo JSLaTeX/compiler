@@ -32,7 +32,6 @@ function buildSyntax() {
 
 export default defineConfig({
 	resolve: {
-		mainFields: ['monke'],
 		alias: {
 			'~client': join(import.meta.url, 'client/src'),
 		},
