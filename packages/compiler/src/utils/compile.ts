@@ -1,13 +1,17 @@
 import * as fs from 'node:fs';
 import ejs from 'ejs';
+import * as R from 'ramda';
 
 type CompileJsLatexProps = {
 	latex: string;
 };
 
 export async function compileJsLatex(props: CompileJsLatexProps) {
-	const template = ejs.compile(props.latex, { async: true, delimiter: '?' });
-	const latexString = await template();
+	const latexString = ejs.render(
+		props.latex,
+		{ R },
+		{ async: true, delimiter: '?' }
+	);
 
 	return latexString;
 }

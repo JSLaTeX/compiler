@@ -37,10 +37,12 @@ importers:
   packages/compiler:
     specifiers:
       '@types/ejs': ^3.1.0
+      '@types/ramda': ^0.28.1
       commander: ^9.0.0
       ejs: ^3.1.6
       lionp: ^1.0.23
       outdent: ^0.8.0
+      ramda: ^0.28.0
       vitest: ^0.6.0
     dependencies:
       commander: 9.0.0
@@ -48,7 +50,9 @@ importers:
       outdent: 0.8.0
     devDependencies:
       '@types/ejs': 3.1.0
+      '@types/ramda': 0.28.1
       lionp: 1.0.23
+      ramda: 0.28.0
       vitest: 0.6.0
 
   packages/extension:
@@ -657,6 +661,12 @@ packages:
 
   /@types/parse-json/4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
+    dev: true
+
+  /@types/ramda/0.28.1:
+    resolution: {integrity: sha512-8wnJK5aPaGL7AYhQSe7olwxjhIB9GO4GOCxd6JjYlVNe128DHJDOu7Kyve4kx4uazeKJdnOS3N5TVRv0z1bb1g==}
+    dependencies:
+      ts-toolbelt: 6.15.5
     dev: true
 
   /@types/responselike/1.0.0:
@@ -4882,6 +4892,10 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
+  /ramda/0.28.0:
+    resolution: {integrity: sha512-9QnLuG/kPVgWvMQ4aODhsBUFKOUmnbUnsSXACv+NCQZcHbeb+v8Lodp8OVxtRULN1/xOyYLLaL6npE6dMq5QTA==}
+    dev: true
+
   /rc/1.2.8:
     resolution: {integrity: sha512-y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==}
     hasBin: true
@@ -5653,6 +5667,10 @@ packages:
       source-map-support: 0.5.21
       typescript: 4.6.2
       yn: 3.1.1
+    dev: true
+
+  /ts-toolbelt/6.15.5:
+    resolution: {integrity: sha512-FZIXf1ksVyLcfr7M317jbB67XFJhOO1YqdTcuGaq9q5jLUoTikukZ+98TPjKiP2jC5CgmYdWWYs0s2nLSU0/1A==}
     dev: true
 
   /tsc-alias/1.6.4:
