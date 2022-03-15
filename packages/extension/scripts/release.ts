@@ -7,8 +7,9 @@ import {
 	copyPackageFiles,
 	getProjectDir,
 	rmDist,
+	rewriteDistPaths,
 } from 'lion-system';
-import { deepKeys, getProperty, setProperty } from 'dot-prop';
+import { setProperty } from 'dot-prop';
 import inquirer from 'inquirer';
 import PressToContinuePrompt from 'inquirer-press-to-continue';
 
@@ -27,21 +28,12 @@ fs.copyFileSync(
 	path.join(distDir, 'license')
 );
 
-// Update dist-pointing paths
-const pkg = JSON.parse(fs.readFileSync('package.json', 'utf-8')) as Record<
+const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8')) as Record<
 	string,
 	unknown
 >;
-
 setProperty(pkg, 'module', false);
-for (const property of deepKeys(pkg)) {
-	// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
-	const value = getProperty(pkg, property) as unknown;
-	if (typeof value === 'string' && value.startsWith('./dist')) {
-		setProperty(pkg, property, value.replace(/^\.\/dist\//, './'));
-	}
-}
-
+rewriteDistPaths(pkg);
 fs.writeFileSync('dist/package.json', JSON.stringify(pkg, null, '\t'));
 
 const iconsDir = path.join(distDir, 'icons');
