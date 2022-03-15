@@ -127,7 +127,8 @@ You can also use imports within EJS:
 
 \begin{document}
 \begin{verbatim}
-	<?= cowsay.say({ text: 'LaTeX!' }) ?>
+<?# Using the cowsay package from https://www.npmjs.com/package/cowsay ?>
+<?= cowsay.say({ text: 'LaTeX!' }) ?>
 \end{verbatim}
 \end{document}
 ```
@@ -141,7 +142,8 @@ The above JSLaTeX code gets compiled to:
 
 \begin{document}
 \begin{verbatim}
-	 ________
+
+ ________
 < LaTeX! >
  --------
         \   ^__^
@@ -153,6 +155,6 @@ The above JSLaTeX code gets compiled to:
 \end{document}
 ```
 
-And when compiled with a standard LaTeX compiler, the corresponding output PDF will display the following text:
+And when compiled with a standard LaTeX compiler, the corresponding output PDF will display the following:
 
 ![cowsay.tex PDF output](assets/cowsay-pdf.png)

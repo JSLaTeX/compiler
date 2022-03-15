@@ -105,9 +105,9 @@ exports[`compiles fixtures > cowsay.tex 1`] = `
 
 
 \\\\begin{document}
-
 \\\\begin{verbatim}
-	 ________
+
+ ________
 < LaTeX! >
  --------
         \\\\   ^__^
@@ -116,7 +116,6 @@ exports[`compiles fixtures > cowsay.tex 1`] = `
                 ||----w |
                 ||     ||
 \\\\end{verbatim}
-
 \\\\end{document}
 "
 `;
