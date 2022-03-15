@@ -1,5 +1,9 @@
 \documentclass{article}
+\usepackage[margin=1in]{geometry}
 \usepackage{float}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\usepackage[version=4]{mhchem}
 
 <?
 const rawData = [
@@ -38,9 +42,9 @@ function getRowEquation(rowIndex) {
 			}
 			\hline
 			Trial \#
-			& Volume of \ce{CuSO4} /\ml
-			& Baseline temperature /\celsius
-			& Time of \ce{Zn} addition /\second
+			& Volume of \ce{CuSO4} /mL
+			& Baseline temperature /$^{\circ}$C
+			& Time of \ce{Zn} addition /s
 			& Equation of cooling line
 			& R value
 			\\\hline

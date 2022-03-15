@@ -2,7 +2,11 @@
 
 exports[`compiles fixtures > chem.tex 1`] = `
 "\\\\documentclass{article}
+\\\\usepackage[margin=1in]{geometry}
 \\\\usepackage{float}
+\\\\usepackage{tabularx}
+\\\\usepackage{ragged2e}
+\\\\usepackage[version=4]{mhchem}
 
 
 
@@ -18,9 +22,9 @@ exports[`compiles fixtures > chem.tex 1`] = `
 			}
 			\\\\hline
 			Trial \\\\#
-			& Volume of \\\\ce{CuSO4} /\\\\ml
-			& Baseline temperature /\\\\celsius
-			& Time of \\\\ce{Zn} addition /\\\\second
+			& Volume of \\\\ce{CuSO4} /mL
+			& Baseline temperature /$^{\\\\circ}$C
+			& Time of \\\\ce{Zn} addition /s
 			& Equation of cooling line
 			& R value
 			\\\\\\\\\\\\hline
