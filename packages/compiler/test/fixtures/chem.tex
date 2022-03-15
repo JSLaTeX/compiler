@@ -26,31 +26,33 @@ function getRowEquation(rowIndex) {
 }
 ?>
 
-\begin{table}[H]
-  \begin{tabularx}{\linewidth}{|
-      >{\RaggedRight}X|
-      >{\RaggedRight}X|
-      >{\RaggedRight}X|
-      >{\RaggedRight}X|
-      >{\RaggedRight}X|
-      >{\RaggedRight}X|
-    }
-    \hline
-    Trial \#
-     & Volume of \ce{CuSO4} /\ml
-     & Baseline temperature /\celsius
-     & Time of \ce{Zn} addition /\second
-     & Equation of cooling line
-     & R value
-    \\\hline
-    <? for (const [rowIndex, row] of data.entries()) { ?>
-      <?= rowIndex + 1 ?>
-      & <?= row.volume ?>
-      & <?= row.initialTemp ?>
-      & <?= row.zincAdditionTime ?>
-      & <?= getRowEquation(rowIndex) ?>
-      & <?= row.rValue.toFixed(3) ?>
-      \\\hline
-    <? } ?>
-  \end{tabularx}
-\end{table}
+\begin{document}
+	\begin{table}[H]
+		\begin{tabularx}{\linewidth}{|
+				>{\RaggedRight}X|
+				>{\RaggedRight}X|
+				>{\RaggedRight}X|
+				>{\RaggedRight}X|
+				>{\RaggedRight}X|
+				>{\RaggedRight}X|
+			}
+			\hline
+			Trial \#
+			& Volume of \ce{CuSO4} /\ml
+			& Baseline temperature /\celsius
+			& Time of \ce{Zn} addition /\second
+			& Equation of cooling line
+			& R value
+			\\\hline
+			<? for (const [rowIndex, row] of data.entries()) { ?>
+				<?= rowIndex + 1 ?>
+				& <?= row.volume ?>
+				& <?= row.initialTemp ?>
+				& <?= row.zincAdditionTime ?>
+				& <?= getRowEquation(rowIndex) ?>
+				& <?= row.rValue.toFixed(3) ?>
+				\\\hline
+			<? } ?>
+		\end{tabularx}
+	\end{table}
+\end{document}
