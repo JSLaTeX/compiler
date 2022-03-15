@@ -8,62 +8,108 @@ Supercharging LaTeX with JavaScript through [EJS](https://ejs.co)!
 
 ## Usage
 
-```text
+The following [chem.tex](packages/compiler/test/fixtures/chem.tex) file:
+
+![Chemistry LaTeX file example](assets/chem-latex.png)
+
+Gets compiled by JSLaTeX into the following LaTeX code:
+
+```latex
 \documentclass{article}
+\usepackage[margin=1in]{geometry}
 \usepackage{float}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\usepackage[version=4]{mhchem}
 
-<?
-const rawData = [
-  [20, 24.4, 72, 75.358, -0.0417, -0.9918],
-  [20, 24.2, 132, 76.1, -0.0521, -0.9591],
-  [20, 24.2, 60, 74.9, -0.086299, -0.99338],
-  [20, 24.8, 72, 38.948, -0.0052021, -0.95144],
-  [20, 24.6, 96, 75.883, -0.042188, -0.99564],
-  [20, 23.1, 14, 35.707, +0.0060035, 0.952365476],
-  [20, 23.8, 15, 74.526, -0.059536, -0.8973],
-  [20, 24.6, 96, 61.881, -0.02918, -0.99694],
-];
 
-const keys = ['volume', 'initialTemp', 'zincAdditionTime', 'coolingLineB', 'coolingLineM', 'rValue'];
 
-// The Ramda library (https://ramdajs.com/) is present in the global scope as `R`
-const data = rawData.map((row) => Object.fromEntries(R.zip(keys, row)));
-
-function getRowEquation(rowIndex) {
-  const row = data[rowIndex];
-  const sign = row.coolingLineM > 0 ? '+' : '-';
-  const equation = `${row.coolingLineM.toFixed(3)} ${sign} ${Math.abs(row.coolingLineM).toFixed(3)}$x$`;
-  return equation;
-}
-?>
-
-\begin{table}[H]
-  \begin{tabularx}{\linewidth}{|
-      >{\RaggedRight}X|
-      >{\RaggedRight}X|
-      >{\RaggedRight}X|
-      >{\RaggedRight}X|
-      >{\RaggedRight}X|
-      >{\RaggedRight}X|
-    }
-    \hline
-    Trial \#
-     & Volume of \ce{CuSO4} /\ml
-     & Baseline temperature /\celsius
-     & Time of \ce{Zn} addition /\second
-     & Equation of cooling line
-     & R value
-    \\\hline
-    <? for (const [rowIndex, row] of data.entries()) { ?>
-      <?= rowIndex + 1 ?>
-      & <?= row.volume ?>
-      & <?= row.initialTemp ?>
-      & <?= row.zincAdditionTime ?>
-      & <?= getRowEquation(rowIndex) ?>
-      & <?= row.rValue.toFixed(3) ?>
+\begin{document}
+  \begin{table}[H]
+    \begin{tabularx}{\linewidth}{|
+        >{\RaggedRight}X|
+        >{\RaggedRight}X|
+        >{\RaggedRight}X|
+        >{\RaggedRight}X|
+        >{\RaggedRight}X|
+        >{\RaggedRight}X|
+      }
+      \hline
+      Trial \#
+      & Volume of \ce{CuSO4} /mL
+      & Baseline temperature /$^{\circ}$C
+      & Time of \ce{Zn} addition /s
+      & Equation of cooling line
+      & R value
       \\\hline
-    <? } ?>
-  \end{tabularx}
-\end{table}
+
+        1
+        & 20
+        & 24.4
+        & 72
+        & -0.042 - 0.042$x$
+        & -0.992
+        \\\hline
+
+        2
+        & 20
+        & 24.2
+        & 132
+        & -0.052 - 0.052$x$
+        & -0.959
+        \\\hline
+
+        3
+        & 20
+        & 24.2
+        & 60
+        & -0.086 - 0.086$x$
+        & -0.993
+        \\\hline
+
+        4
+        & 20
+        & 24.8
+        & 72
+        & -0.005 - 0.005$x$
+        & -0.951
+        \\\hline
+
+        5
+        & 20
+        & 24.6
+        & 96
+        & -0.042 - 0.042$x$
+        & -0.996
+        \\\hline
+
+        6
+        & 20
+        & 23.1
+        & 14
+        & 0.006 + 0.006$x$
+        & 0.952
+        \\\hline
+
+        7
+        & 20
+        & 23.8
+        & 15
+        & -0.060 - 0.060$x$
+        & -0.897
+        \\\hline
+
+        8
+        & 20
+        & 24.6
+        & 96
+        & -0.029 - 0.029$x$
+        & -0.997
+        \\\hline
+
+    \end{tabularx}
+  \end{table}
+\end{document}
 ```
 
+Note that there is no trace of the original JavaScript code in the final LaTeX file.
