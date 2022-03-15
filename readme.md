@@ -133,3 +133,21 @@ You can also use imports within EJS:
 
 The above JSLaTeX code gets compiled to:
 
+```latex
+\documentclass{article}
+
+
+
+\begin{document}
+
+ \_\_\_\_\_\_\_\_
+&lt; LaTeX! &gt;
+ --------
+        \textbackslash{}   \textasciicircum{}\_\_\textasciicircum{}
+         \textbackslash{}  (oo)\textbackslash{}\_\_\_\_\_\_\_
+            (\_\_)\textbackslash{}       )\textbackslash{}/\textbackslash{}
+                ||----w |
+                ||     ||
+\end{document}
+```
+

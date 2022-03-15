@@ -11,7 +11,12 @@ export async function compileJsLatex(props: CompileJsLatexProps) {
 	const latexString = ejs.render(
 		props.latex,
 		{ R, escapeLatex },
-		{ async: true, delimiter: '?' }
+		{
+			async: true,
+			delimiter: '?',
+			// Don't escape HTML (since we're outputting to LaTeX)
+			escape: (str) => str as string,
+		}
 	);
 
 	return latexString;
