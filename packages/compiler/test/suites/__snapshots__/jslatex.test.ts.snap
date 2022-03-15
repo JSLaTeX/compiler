@@ -106,14 +106,17 @@ exports[`compiles fixtures > cowsay.tex 1`] = `
 
 \\\\begin{document}
 
- \\\\_\\\\_\\\\_\\\\_\\\\_\\\\_\\\\_\\\\_
-&lt; LaTeX! &gt;
+\\\\begin{verbatim}
+	 ________
+< LaTeX! >
  --------
-        \\\\textbackslash{}   \\\\textasciicircum{}\\\\_\\\\_\\\\textasciicircum{}
-         \\\\textbackslash{}  (oo)\\\\textbackslash{}\\\\_\\\\_\\\\_\\\\_\\\\_\\\\_\\\\_
-            (\\\\_\\\\_)\\\\textbackslash{}       )\\\\textbackslash{}/\\\\textbackslash{}
+        \\\\   ^__^
+         \\\\  (oo)\\\\_______
+            (__)\\\\       )\\\\/\\\\
                 ||----w |
                 ||     ||
+\\\\end{verbatim}
+
 \\\\end{document}
 "
 `;

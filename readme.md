@@ -126,8 +126,9 @@ You can also use imports within EJS:
 <? const { default: cowsay } = await import('cowsay') ?>
 
 \begin{document}
-<?# escapeLatex(latex: string) is a global helper function provided by JSLaTeX for escaping LaTeX strings (see https://www.npmjs.com/package/escape-latex) ?>
-<?= escapeLatex(cowsay.say({ text: 'LaTeX!' })) ?>
+\begin{verbatim}
+	<?= cowsay.say({ text: 'LaTeX!' }) ?>
+\end{verbatim}
 \end{document}
 ```
 
@@ -139,15 +140,19 @@ The above JSLaTeX code gets compiled to:
 
 
 \begin{document}
-
- \_\_\_\_\_\_\_\_
-&lt; LaTeX! &gt;
+\begin{verbatim}
+	 ________
+< LaTeX! >
  --------
-        \textbackslash{}   \textasciicircum{}\_\_\textasciicircum{}
-         \textbackslash{}  (oo)\textbackslash{}\_\_\_\_\_\_\_
-            (\_\_)\textbackslash{}       )\textbackslash{}/\textbackslash{}
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
                 ||----w |
                 ||     ||
+\end{verbatim}
 \end{document}
 ```
 
+And when compiled with a standard LaTeX compiler, the corresponding output PDF will display the following text:
+
+![cowsay.tex PDF output](assets/cowsay-pdf.png)

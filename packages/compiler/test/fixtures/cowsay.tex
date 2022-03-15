@@ -3,6 +3,7 @@
 <? const { default: cowsay } = await import('cowsay') ?>
 
 \begin{document}
-<?# escapeLatex(latex: string) is a global helper function provided by JSLaTeX for escaping LaTeX strings (see https://www.npmjs.com/package/escape-latex) ?>
-<?= escapeLatex(cowsay.say({ text: 'LaTeX!' })) ?>
+\begin{verbatim}
+	<?= cowsay.say({ text: 'LaTeX!' }) ?>
+\end{verbatim}
 \end{document}
