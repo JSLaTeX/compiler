@@ -125,7 +125,6 @@ export default function getConfigString() {
 	const config = {
 		name: 'JSLaTeX File',
 		scopeName: 'text.tex.latex.jslatex',
-		fileTypes: ['jtex'],
 		patterns: [
 			{ include: '#tag-block-comment' },
 			{ include: '#single-line-tag-ejs' },
