@@ -4,10 +4,11 @@
 
 Provides syntax highlighting and IntelliSense for `.tex` files when using [EJS](https://ejs.co) or [ETS (embedded TypeScript!)](https://github.com/leonzalion/ets)
 
-![Syntax Highlighting Example](https://raw.githubusercontent.com/leonzalion/jslatex/main/packages/extension/assets/syntax-highlighting.png)
+![Syntax Highlighting Example](packages/extension/assets/syntax-highlighting.png)
 
 Using JSLaTeX, the above code would output a LaTeX document which would display something similar to the following:
-![Syntax Highlighting Example Output](https://raw.githubusercontent.com/leonzalion/jslatex/main/packages/extension/assets/syntax-highlighting-output.png)
+
+![Syntax Highlighting Example Output](packages/extension/assets/syntax-highlighting-output.png)
 
 To compile a LaTeX file that includes EJS/ETS, please visit the site for the [JSLaTeX compiler](https://npm.im/jslatex).
 

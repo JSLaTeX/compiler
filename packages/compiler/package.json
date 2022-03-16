@@ -38,7 +38,6 @@
 	"devDependencies": {
 		"@types/escape-latex": "^0.1.30",
 		"@types/ramda": "^0.28.1",
-		"cowsay": "^1.5.0",
 		"lionp": "^1.0.23",
 		"vitest": "^0.6.1"
 	},
