@@ -1,3 +1,4 @@
+import * as process from 'node:process';
 import * as path from 'node:path';
 import * as fs from 'node:fs';
 import { program } from 'commander';
@@ -14,7 +15,10 @@ program
 const file = program.args[0]!;
 const { out } = program.opts<{ out: string }>();
 
-const latexString = await compileJsLatexFile({ filePath: file });
+const latexString = await compileJsLatexFile({
+	filePath: file,
+	projectBaseUrl: process.cwd(),
+});
 if (out === undefined) {
 	const latexFile = path.parse(file).name;
 	if (fs.existsSync(`${latexFile}.tex`)) {
