@@ -1,6 +1,6 @@
 # JSLaTeX VSCode Extension
 
-[![Visual&nbsp;Studio Marketplace](https://img.shields.io/visual-studio-marketplace/v/leonzalion.jslatex.svg?label=Visual%20Studio%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=leonzalion.jslatex)
+[![Visual Studio Marketplace](https://img.shields.io/visual-studio-marketplace/v/leonzalion.jslatex.svg?label=Visual%20Studio%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=leonzalion.jslatex)
 
 Provides syntax highlighting and IntelliSense for `.tex` files when using [EJS](https://ejs.co) or [ETS (embedded TypeScript!)](https://github.com/leonzalion/ets)
 
