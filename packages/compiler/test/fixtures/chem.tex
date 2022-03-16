@@ -6,7 +6,7 @@
 \usepackage[version=4]{mhchem}
 
 <?
-const rawData = [
+const rawData: string[][] = [
   [20, 24.4, 72, 75.358, -0.0417, -0.9918],
   [20, 24.2, 132, 76.1, -0.0521, -0.9591],
   [20, 24.2, 60, 74.9, -0.086299, -0.99338],
@@ -17,12 +17,12 @@ const rawData = [
   [20, 24.6, 96, 61.881, -0.02918, -0.99694],
 ];
 
-const keys = ['volume', 'initialTemp', 'zincAdditionTime', 'coolingLineB', 'coolingLineM', 'rValue'];
+const keys: string[] = ['volume', 'initialTemp', 'zincAdditionTime', 'coolingLineB', 'coolingLineM', 'rValue'];
 
 // The Ramda library (https://ramdajs.com/) is present in the global scope as `R`
 const data = rawData.map((row) => Object.fromEntries(R.zip(keys, row)));
 
-function getRowEquation(rowIndex) {
+function getRowEquation(rowIndex: number) {
   const row = data[rowIndex];
   const sign = row.coolingLineM > 0 ? '+' : '-';
   const equation = `${row.coolingLineM.toFixed(3)} ${sign} ${Math.abs(row.coolingLineM).toFixed(3)}$x$`;
