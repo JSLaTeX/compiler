@@ -17,7 +17,7 @@ const { out } = program.opts<{ out: string }>();
 
 const latexString = await compileJsLatexFile({
 	filePath: file,
-	projectBaseUrl: process.cwd(),
+	projectBaseUrl: `${process.cwd()}/`, // slash is needed here, otherwise it won't work
 });
 if (out === undefined) {
 	const latexFile = path.parse(file).name;
