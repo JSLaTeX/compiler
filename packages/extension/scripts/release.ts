@@ -32,17 +32,10 @@ const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8')) as Record<
 	string,
 	unknown
 >;
+
 setProperty(pkg, 'type', 'commonjs');
 rewriteDistPaths(pkg);
 fs.writeFileSync('dist/package.json', JSON.stringify(pkg, null, '\t'));
-
-const iconsDir = path.join(distDir, 'icons');
-
-fs.mkdirSync(iconsDir, { recursive: true });
-fs.copyFileSync(
-	path.join(monorepoDir, 'assets/jslatex.png'),
-	path.join(iconsDir, 'icon.png')
-);
 
 process.chdir(distDir);
 
