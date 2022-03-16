@@ -17,7 +17,7 @@ const rawData: string[][] = [
   [20, 24.6, 96, 61.881, -0.02918, -0.99694],
 ];
 
-const keys: string[] = ['volume', 'initialTemp', 'zincAdditionTime', 'coolingLineB', 'coolingLineM', 'rValue'];
+const keys = ['volume', 'initialTemp', 'zincAdditionTime', 'coolingLineB', 'coolingLineM', 'rValue'];
 
 // The Ramda library (https://ramdajs.com/) is present in the global scope as `R`
 const data = rawData.map((row) => Object.fromEntries(R.zip(keys, row)));
