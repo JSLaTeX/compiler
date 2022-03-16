@@ -48,7 +48,8 @@ describe('compiles fixtures', () => {
 	test('cowsay.tex', async () => {
 		expect(
 			await compileJsLatexFile({
-				filePath: path.join(fixturesDir, 'cowsay.tex'),
+				filePath: path.join(fixturesDir, 'cowsay/cowsay.tex'),
+				projectBaseUrl: path.join(fixturesDir, 'cowsay/'),
 			})
 		).toMatchSnapshot();
 	});
