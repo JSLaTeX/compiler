@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"description": "Supercharging LaTeX with JavaScript!",
 	"license": "MIT",
+	"exports": "./index.js",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/leonzalion/jslatex.git"
