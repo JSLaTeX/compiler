@@ -2,11 +2,41 @@
 
 [![Visual&nbsp;Studio Marketplace](https://img.shields.io/visual-studio-marketplace/v/leonzalion.jslatex.svg?label=Visual%20Studio%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=leonzalion.jslatex)
 
-Supercharging LaTeX with JavaScript through [EJS](https://ejs.co)!
+Supercharging LaTeX with JavaScript through [EJS](https://ejs.co)/[ETS (embedded TypeScript!)](https://github.com/leonzalion/ets)
 
-**Note:** Instead of `<%` and `%>` tags, JSLaTeX uses `<?` and `?>` in order to be compatible with existing LaTeX tools such as LaTeX formatters.
+**Note:** Instead of `<%` and `%>` tags, JSLaTeX uses `<?` and `?>` in order maintain compatibility with existing LaTeX tools such as LaTeX formatters (since `%` are treated as comments in LaTeX).
+
+## Installation
+
+To install the JSLaTeX compiler, run:
+
+```shell
+npm install --global jslatex
+```
 
 ## Usage
+
+To compile a LaTeX file with EJS/ETS, run:
+
+```shell
+jslatex <file>
+```
+
+For example, if your LaTeX file was named `chem.tex`, you would run:
+
+```shell
+jslatex chem.tex
+```
+
+This would produce a file in the same directory called `chem.out.tex`. Because the outputted LaTeX document is pure LaTeX, it can be passed to standard LaTeX tools, like `latexmk` or `lualatex`.
+
+If you want to specify the name of the output file, you can use the `-o` or `--out` option:
+
+```shell
+jslatex chem.tex -o compiled-chem.tex
+```
+
+## Example
 
 The following [chem.tex](packages/compiler/test/fixtures/chem.tex) file (syntax highlighting provided by the [JSLaTeX VSCode extension](https://marketplace.visualstudio.com/items?itemName=leonzalion.jslatex)):
 
@@ -158,3 +188,25 @@ The above JSLaTeX code gets compiled to:
 And when compiled with a standard LaTeX compiler, the corresponding output PDF will display the following:
 
 ![cowsay.tex PDF output](assets/cowsay-pdf.png)
+
+## Programmatic Usage
+
+You can import JSLaTeX as a regular `npm` package and call it from Node.js:
+
+```javascript
+import { compileJsLatex, compileJsLatexFile } from 'jslatex';
+
+const result = await compileJsLatex(String.raw`
+\documentclass{article}
+<?= "Hello from EJS!" ?>
+`);
+
+console.log(result);
+// Outputs:
+/*
+\documentclass{article}
+Hello from EJS!
+*/
+
+console.log(await compileJsLatexFile('cow.tex'));
+```

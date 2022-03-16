@@ -17,7 +17,11 @@ const { out } = program.opts<{ out: string }>();
 const latexString = await compileJsLatexFile({ filePath: file });
 if (out === undefined) {
 	const latexFile = path.parse(file).name;
-	fs.writeFileSync(`${latexFile}.tex`, latexString);
+	if (fs.existsSync(`${latexFile}.tex`)) {
+		fs.writeFileSync(`${latexFile}.out.tex`, latexString);
+	} else {
+		fs.writeFileSync(`${latexFile}.tex`, latexString);
+	}
 } else {
 	fs.writeFileSync(out, latexString);
 }
