@@ -208,5 +208,11 @@ console.log(result);
 Hello from EJS!
 */
 
-console.log(await compileJsLatexFile('cow.tex'));
+// In order for dynamic `import()`s to work, you need to pass projectBaseUrl:
+console.log(
+  await compileJsLatexFile({
+    filePath: 'cow.tex',
+    projectBaseUrl: import.meta.url,
+  })
+);
 ```

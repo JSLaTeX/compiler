@@ -24,7 +24,7 @@ import { compileJsLatex, compileJsLatexFile } from 'jslatex';
 const result = await compileJsLatex(String.raw`
   \documentclass{article}
   <?= "Hello from EJS!" ?>
-`)
+`);
 
 console.log(result);
 // Outputs:
@@ -34,8 +34,10 @@ Hello from EJS!
 */
 
 // In order for dynamic `import()`s to work, you need to pass projectBaseUrl:
-console.log(await compileJsLatexFile({
-  filePath: 'cow.tex',
-  projectBaseUrl: import.meta.url
-}));
+console.log(
+  await compileJsLatexFile({
+    filePath: 'cow.tex',
+    projectBaseUrl: import.meta.url,
+  })
+);
 ```
