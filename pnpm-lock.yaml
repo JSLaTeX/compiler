@@ -75,6 +75,7 @@ importers:
       outdent: ^0.8.0
       vite: ^2.8.6
       vsce: ^2.7.0
+      vscode-ejs: ^0.0.1
       vscode-languageclient: ^6.1.3
       vscode-languageserver: ^6.1.1
     dependencies:
@@ -91,6 +92,7 @@ importers:
       outdent: 0.8.0
       vite: 2.8.6
       vsce: 2.7.0
+      vscode-ejs: 0.0.1
 
   packages/extension/client:
     specifiers: {}
@@ -6034,6 +6036,13 @@ packages:
       xml2js: 0.4.23
       yauzl: 2.10.0
       yazl: 2.5.1
+    dev: true
+
+  /vscode-ejs/0.0.1:
+    resolution: {integrity: sha512-254yuDHwcVacM8wx/MXdbCuTjkptXtwYYa33fPedJKa5LfQOApmmcxkguUJR6Txt1D4rGFROAb/Fj+SPt8BsFQ==}
+    dependencies:
+      escape-string-regexp: 5.0.0
+      outdent: 0.8.0
     dev: true
 
   /vscode-jsonrpc/5.0.1:

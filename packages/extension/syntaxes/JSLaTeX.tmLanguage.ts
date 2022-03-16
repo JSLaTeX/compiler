@@ -1,4 +1,5 @@
-import { getRepository } from './utils/repository.js';
+import * as vscodeEjs from 'vscode-ejs';
+import { tagDelimiters } from './utils/tag.js';
 
 export default function getConfigString() {
 	const config = {
@@ -11,7 +12,7 @@ export default function getConfigString() {
 			{ include: '#tag-ejs' },
 			{ include: 'text.tex.latex' },
 		],
-		repository: getRepository(),
+		repository: vscodeEjs.getRepository(tagDelimiters),
 	};
 
 	return JSON.stringify(config);
