@@ -39,7 +39,7 @@ importers:
       '@types/escape-latex': ^0.1.30
       '@types/ramda': ^0.28.1
       commander: ^9.0.0
-      embedded-ts: ^0.1.0
+      embedded-ts: ^0.1.1
       escape-latex: ^1.2.0
       escape-string-regexp: ^5.0.0
       lionp: ^1.0.23
@@ -48,7 +48,7 @@ importers:
       vitest: ^0.6.1
     dependencies:
       commander: 9.0.0
-      embedded-ts: 0.1.0
+      embedded-ts: 0.1.1
       escape-latex: 1.2.0
       escape-string-regexp: 5.0.0
       outdent: 0.8.0
@@ -1902,8 +1902,8 @@ packages:
     resolution: {integrity: sha512-EVTZ+igi8x63pK4bPuA95PXIs2b2Cowi3WQwI9f9qManLiZJOD1Lash1J3W4TvvcUCcIR4o/rgi9o8UicXSO+w==}
     dev: true
 
-  /embedded-ts/0.1.0:
-    resolution: {integrity: sha512-2Q5/fph8uY0j/hFn6LQFXF3RNgOr6ZHRgUKkDyPO98eBYb+nmDTsegOwTdglW94WC8c79G2bt6WgWTENvvJR1w==}
+  /embedded-ts/0.1.1:
+    resolution: {integrity: sha512-auUfMbXdA1i8JaGQywBM/9zBcjwhNWTiM1PL1G/cCqwMovIghd0nZpCVWpugXRWAJw9Cg5f5U8gpCpP7Hv1zyA==}
     hasBin: true
     dependencies:
       change-case: 4.1.2

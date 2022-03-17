@@ -3,7 +3,7 @@ import { createRequire } from 'node:module';
 import * as ets from 'embedded-ts';
 import * as R from 'ramda';
 import escapeLatex from 'escape-latex';
-import type { ETSOptions } from 'embedded-ts/types.js';
+import type { ETSOptions } from 'embedded-ts';
 
 type CompileJsLatexProps =
 	| {
