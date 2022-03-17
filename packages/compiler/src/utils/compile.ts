@@ -9,7 +9,7 @@ type CompileJsLatexProps =
 	| {
 			latex: string;
 			projectBaseUrl?: string;
-			etsOptions?: ETSOptions;
+			etsOptions?: ETSOptions & { data?: Record<string, unknown> };
 	  }
 	| string;
 export async function compileJsLatex(props: CompileJsLatexProps) {
@@ -31,7 +31,7 @@ export async function compileJsLatex(props: CompileJsLatexProps) {
 
 	const latexString = ets.render({
 		template: latex,
-		data: { R, escapeLatex },
+		data: { R, escapeLatex, ...etsOptions?.data },
 		options: {
 			delimiter: '?',
 			// Don't escape XML (since we're outputting to LaTeX)
@@ -48,7 +48,7 @@ type CompileJsLatexFileProps =
 	| {
 			filePath: string;
 			projectBaseUrl?: string;
-			etsOptions?: ETSOptions;
+			etsOptions?: ETSOptions & { data?: Record<string, unknown> };
 	  }
 	| string;
 export async function compileJsLatexFile(props: CompileJsLatexFileProps) {
