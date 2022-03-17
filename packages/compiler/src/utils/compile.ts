@@ -3,24 +3,30 @@ import { createRequire } from 'node:module';
 import * as ets from 'embedded-ts';
 import * as R from 'ramda';
 import escapeLatex from 'escape-latex';
+import type { ETSOptions } from 'embedded-ts/types.js';
 
 type CompileJsLatexProps =
 	| {
 			latex: string;
 			projectBaseUrl?: string;
+			etsOptions?: ETSOptions;
 	  }
 	| string;
 export async function compileJsLatex(props: CompileJsLatexProps) {
 	let latex: string;
 	let importResolver: ((importString: string) => string) | undefined;
+	let etsOptions;
+
 	if (typeof props === 'string') {
 		latex = props;
 		importResolver = undefined;
+		etsOptions = undefined;
 	} else {
 		latex = props.latex;
 		importResolver = props.projectBaseUrl
 			? createRequire(props.projectBaseUrl).resolve
 			: undefined;
+		etsOptions = props.etsOptions;
 	}
 
 	const latexString = ets.render({
@@ -31,6 +37,7 @@ export async function compileJsLatex(props: CompileJsLatexProps) {
 			// Don't escape XML (since we're outputting to LaTeX)
 			escape: (str) => str as string,
 			importResolver,
+			...etsOptions,
 		},
 	});
 
@@ -41,6 +48,7 @@ type CompileJsLatexFileProps =
 	| {
 			filePath: string;
 			projectBaseUrl?: string;
+			etsOptions?: ETSOptions;
 	  }
 	| string;
 export async function compileJsLatexFile(props: CompileJsLatexFileProps) {
@@ -48,6 +56,10 @@ export async function compileJsLatexFile(props: CompileJsLatexFileProps) {
 		return compileJsLatex(props);
 	} else {
 		const latex = await fs.promises.readFile(props.filePath, 'utf-8');
-		return compileJsLatex({ latex, projectBaseUrl: props.projectBaseUrl });
+		return compileJsLatex({
+			latex,
+			projectBaseUrl: props.projectBaseUrl,
+			etsOptions: props.etsOptions,
+		});
 	}
 }
