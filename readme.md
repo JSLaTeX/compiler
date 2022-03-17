@@ -4,7 +4,7 @@
 
 Supercharging LaTeX with JavaScript through [EJS](https://ejs.co)/[ETS (embedded TypeScript!)](https://github.com/leonzalion/ets)
 
-**Note:** Instead of `<%` and `%>` tags, JSLaTeX uses `<?` and `?>` in order maintain compatibility with existing LaTeX tools such as LaTeX formatters (since `%` are treated as comments in LaTeX).
+**Note:** Instead of `<%` and `%>` tags, JSLaTeX uses `<?` and `?>` in order maintain compatibility with existing LaTeX tools such as LaTeX formatters (since the `%` symbol is treated as comments in LaTeX).
 
 ## Installation
 
