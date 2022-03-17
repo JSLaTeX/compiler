@@ -9,7 +9,7 @@ type CompileJsLatexProps =
 	| {
 			latex: string;
 			projectBaseUrl?: string;
-			etsOptions?: ETSOptions & { data?: Record<string, unknown> };
+			etsOptions?: Partial<ETSOptions> & { data?: Record<string, unknown> };
 	  }
 	| string;
 export async function compileJsLatex(props: CompileJsLatexProps) {
@@ -48,7 +48,7 @@ type CompileJsLatexFileProps =
 	| {
 			filePath: string;
 			projectBaseUrl?: string;
-			etsOptions?: ETSOptions & { data?: Record<string, unknown> };
+			etsOptions?: Partial<ETSOptions> & { data?: Record<string, unknown> };
 	  }
 	| string;
 export async function compileJsLatexFile(props: CompileJsLatexFileProps) {
