@@ -24,7 +24,7 @@ export async function compileJsLatex(props: CompileJsLatexProps) {
 	} else {
 		latex = props.latex;
 		importResolver = props.projectBaseUrl
-			? createRequire(props.projectBaseUrl).resolve
+			? createRequire(new URL(props.projectBaseUrl)).resolve
 			: undefined;
 		etsOptions = props.etsOptions;
 	}
