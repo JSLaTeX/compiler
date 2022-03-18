@@ -1,5 +1,6 @@
 import * as fs from 'node:fs';
 import { createRequire } from 'node:module';
+import { pathToFileURL } from 'node:url';
 import * as ets from 'embedded-ts';
 import * as R from 'ramda';
 import escapeLatex from 'escape-latex';
@@ -23,8 +24,9 @@ export async function compileJsLatex(props: CompileJsLatexProps) {
 		etsOptions = undefined;
 	} else {
 		latex = props.latex;
+		console.log(props.projectBaseUrl);
 		importResolver = props.projectBaseUrl
-			? createRequire(new URL(props.projectBaseUrl)).resolve
+			? createRequire(pathToFileURL(props.projectBaseUrl)).resolve
 			: undefined;
 		etsOptions = props.etsOptions;
 	}
