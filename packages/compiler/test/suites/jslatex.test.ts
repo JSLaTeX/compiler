@@ -1,7 +1,8 @@
 import * as path from 'node:path';
-import { expect, test, describe } from 'vitest';
+import { expect, test, describe, beforeAll } from 'vitest';
 import { outdent } from 'outdent';
 import { join } from 'desm';
+import { execaCommand } from 'execa';
 import { compileJsLatex, compileJsLatexFile } from '~/index.js';
 
 const fixturesDir = join(import.meta.url, '../fixtures');
@@ -39,6 +40,12 @@ test('compiles JSLaTeX with ramda', async () => {
 });
 
 describe('compiles fixtures', () => {
+	beforeAll(async () => {
+		await execaCommand('pnpm install', {
+			cwd: path.join(fixturesDir, 'cowsay'),
+		});
+	});
+
 	test('chem.tex', async () => {
 		expect(
 			await compileJsLatexFile({ filePath: path.join(fixturesDir, 'chem.tex') })
