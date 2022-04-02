@@ -1,7 +1,9 @@
 {
 	"name": "jslatex",
+	"version": "0.1.7",
 	"description": "Supercharging LaTeX with JavaScript!",
 	"license": "MIT",
+	"exports": "./index.js",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/leonzalion/jslatex.git"
@@ -13,20 +15,32 @@
 		"url": "https://leonzalion.com"
 	},
 	"type": "module",
+	"bin": {
+		"jslatex": "./bin/cli.js"
+	},
 	"scripts": {
-		"prepare": "lion-git-hooks",
-		"watch:extension": "pnpm run watch --filter=./packages/extension",
-		"build:extension": "pnpm run build --filter=./packages/extension",
-		"test": "pnpm recursive run test",
-		"lint": "pnpm recursive run lint",
-		"prettier": "pnpm recursive run prettier",
-		"tc": "pnpm recursive run tc"
+		"release": "lionp",
+		"start": "node-ts ./src/bin/cli.ts",
+		"build": "node-ts ./scripts/build.ts",
+		"test": "vitest run",
+		"lint": "eslint --cache --fix .",
+		"prettier": "prettier --write .",
+		"tc": "tsc --noEmit"
+	},
+	"dependencies": {
+		"commander": "^9.0.0",
+		"embedded-ts": "^0.1.1",
+		"escape-latex": "^1.2.0",
+		"escape-string-regexp": "^5.0.0",
+		"outdent": "^0.8.0",
+		"ramda": "^0.28.0"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^15.0.0",
 		"@leonzalion/configs": "latest",
-		"@types/dedent": "^0.7.0",
+		"@types/escape-latex": "^0.1.30",
 		"@types/node": "^17.0.21",
+		"@types/ramda": "^0.28.1",
 		"desm": "^1.2.0",
 		"eslint": "^8.11.0",
 		"eslint-define-config": "^1.2.5",
@@ -34,20 +48,13 @@
 		"lint-staged": "^12.3.5",
 		"lion-git-hooks": "^1.0.7",
 		"lion-system": "^1.0.15",
+		"lionp": "^1.0.23",
 		"prettier": "^2.5.1",
 		"tsc-alias": "^1.6.4",
-		"typescript": "^4.6.2"
+		"typescript": "^4.6.2",
+		"vitest": "^0.6.1"
 	},
-	"prettier": "@leonzalion/configs/prettier.cjs",
-	"commitlint": {
-		"extends": [
-			"@leonzalion/configs/commitlint.cjs"
-		]
-	},
-	"lint-staged": {
-		"*.{js,ts}": [
-			"pnpm run lint",
-			"pnpm run prettier"
-		]
+	"publishConfig": {
+		"directory": "dist"
 	}
 }

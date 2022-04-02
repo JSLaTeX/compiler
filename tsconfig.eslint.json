@@ -1,9 +1,4 @@
 {
 	"extends": "./tsconfig.json",
-	"include": [
-		"packages",
-		"scripts",
-		".eslintrc.cjs",
-		".markdownlint.cjs"
-	]
+	"include": [".eslintrc.cjs", "src", "test", "scripts", "vitest.config.ts"]
 }

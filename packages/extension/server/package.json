@@ -1,5 +1,0 @@
-{
-	"name": "jslatex-extension-server",
-	"type": "module",
-	"main": "./src/server.ts"
-}

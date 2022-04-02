@@ -1,12 +1,15 @@
 {
 	"extends": "@leonzalion/configs/tsconfig.json",
 	"compilerOptions": {
-		"module": "esnext",
-		"lib": [
-			"es2021"
-		]
+		"outDir": "dist",
+		"baseUrl": ".",
+		"paths": {
+			"~/*": [
+				"./src/*"
+			]
+		}
 	},
-	"exclude": [
-		"packages",
+	"include": [
+		"./src"
 	]
 }
