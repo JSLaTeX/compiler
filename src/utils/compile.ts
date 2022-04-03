@@ -21,15 +21,19 @@ export async function compileJsLatex(props: CompileJsLatexProps) {
 		importResolver = undefined;
 		etsOptions = undefined;
 	} else {
-		const {
-			default: { createRequire },
-		} = await import('node:module');
-		const { pathToFileURL } = await import('node:url');
-
 		latex = props.latex;
-		importResolver = props.projectBaseUrl
-			? createRequire(pathToFileURL(props.projectBaseUrl)).resolve
-			: undefined;
+		if (props.projectBaseUrl) {
+			const {
+				default: { createRequire },
+			} = await import('node:module');
+			const { pathToFileURL } = await import('node:url');
+			importResolver = createRequire(
+				pathToFileURL(props.projectBaseUrl)
+			).resolve;
+		} else {
+			importResolver = undefined;
+		}
+
 		etsOptions = props.etsOptions;
 	}
 
