@@ -1,6 +1,4 @@
 import * as fs from 'node:fs';
-import { createRequire } from 'node:module';
-import { pathToFileURL } from 'node:url';
 import * as ets from 'embedded-ts';
 import * as R from 'ramda';
 import escapeLatex from 'escape-latex';
@@ -23,6 +21,11 @@ export async function compileJsLatex(props: CompileJsLatexProps) {
 		importResolver = undefined;
 		etsOptions = undefined;
 	} else {
+		const {
+			default: { createRequire },
+		} = await import('node:module');
+		const { pathToFileURL } = await import('node:url');
+
 		latex = props.latex;
 		importResolver = props.projectBaseUrl
 			? createRequire(pathToFileURL(props.projectBaseUrl)).resolve
