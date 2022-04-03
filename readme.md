@@ -38,7 +38,7 @@ jslatex chem.tex -o compiled-chem.tex
 
 ## Example
 
-The following [chem.tex](packages/compiler/test/fixtures/chem.tex) file (syntax highlighting provided by the [JSLaTeX VSCode extension](https://marketplace.visualstudio.com/items?itemName=leonzalion.jslatex)):
+The following [chem.tex](test/fixtures/chem.tex) file (syntax highlighting provided by the [JSLaTeX VSCode extension](https://marketplace.visualstudio.com/items?itemName=leonzalion.jslatex)):
 
 ![Chemistry LaTeX file example](assets/chem-latex.png)
 
