@@ -1,4 +1,3 @@
-import * as fs from 'node:fs';
 import * as ets from 'embedded-ts';
 import * as R from 'ramda';
 import escapeLatex from 'escape-latex';
@@ -60,8 +59,11 @@ type CompileJsLatexFileProps =
 	  }
 	| string;
 export async function compileJsLatexFile(props: CompileJsLatexFileProps) {
+	const fs = await import('node:fs');
+
 	if (typeof props === 'string') {
-		return compileJsLatex(props);
+		const latex = await fs.promises.readFile(props, 'utf-8');
+		return compileJsLatex({ latex });
 	} else {
 		const latex = await fs.promises.readFile(props.filePath, 'utf-8');
 		return compileJsLatex({
