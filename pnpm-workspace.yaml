@@ -1,5 +1,0 @@
-packages:
-  - packages/compiler
-  - packages/extension/client
-  - packages/extension/server
-  - packages/extension
