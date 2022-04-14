@@ -1,6 +1,6 @@
 # JSLaTeX
 
-[![Visual&nbsp;Studio Marketplace](https://img.shields.io/visual-studio-marketplace/v/leonzalion.jslatex.svg?label=Visual%20Studio%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=leonzalion.jslatex)
+[![Visual Studio Marketplace](https://img.shields.io/visual-studio-marketplace/v/leonzalion.jslatex.svg?label=Visual%20Studio%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=leonzalion.jslatex)
 
 Supercharging LaTeX with JavaScript through [EJS](https://ejs.co)/[ETS (embedded TypeScript!)](https://github.com/leonzalion/ets)
 
@@ -210,9 +210,9 @@ Hello from EJS!
 
 // In order for dynamic `import()`s to work, you need to pass projectBaseUrl:
 console.log(
-  await compileJsLatexFile({
-    filePath: 'cow.tex',
-    projectBaseUrl: import.meta.url,
-  })
+	await compileJsLatexFile({
+		filePath: 'cow.tex',
+		projectBaseUrl: import.meta.url,
+	})
 );
 ```
