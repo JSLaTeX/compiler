@@ -3,7 +3,7 @@
 	"version": "0.2.2",
 	"description": "Supercharging LaTeX with JavaScript!",
 	"license": "MIT",
-	"exports": "./index.js",
+	"exports": "./src/index.ts",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/leonzalion/jslatex.git"
@@ -30,7 +30,7 @@
 	},
 	"dependencies": {
 		"commander": "^9.1.0",
-		"embedded-ts": "^0.2.1",
+		"embedded-ts": "^0.3.0",
 		"escape-latex": "^1.2.0",
 		"escape-string-regexp": "^5.0.0",
 		"outdent": "^0.8.0",
@@ -44,9 +44,9 @@
 		"desm": "^1.2.0",
 		"eslint-define-config": "^1.3.0",
 		"execa": "^6.1.0",
-		"lion-system": "^1.1.3",
+		"lion-system": "^1.3.9",
 		"typescript": "^4.6.3",
-		"vitest": "^0.8.4"
+		"vitest": "^0.9.3"
 	},
 	"publishConfig": {
 		"directory": "dist"
