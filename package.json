@@ -1,6 +1,6 @@
 {
 	"name": "jslatex",
-	"version": "0.2.2",
+	"version": "0.3.0",
 	"description": "Supercharging LaTeX with JavaScript!",
 	"license": "MIT",
 	"exports": "./src/index.ts",
