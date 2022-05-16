@@ -1,9 +1,3 @@
-const path = require('path');
-const { defineConfig } = require('eslint-define-config');
+const createESLintConfig = require('lionconfig/eslint')
 
-module.exports = defineConfig({
-	extends: require.resolve('@leonzalion/configs/eslint.cjs'),
-	parserOptions: {
-		project: path.resolve(__dirname, './tsconfig.eslint.json'),
-	},
-});
+module.exports = createESLintConfig(__dirname);
